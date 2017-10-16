@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class EventManager : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public delegate void ClickAction();
+    public static event ClickAction OnClick;
+
+    void OnMouseDown()
+    {
+        
+        if (OnClick != null)
+        {
+            OnClick();
+        }
+    }
+
 }
