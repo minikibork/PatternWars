@@ -15,19 +15,18 @@ public class Dekk : MonoBehaviour {
     float x, y;
     public void PutInPlace()
     {
-
-        
-
             //spawns item in array position between 0 and 100
             //int whichItem = Random.Range(0, 21);
-
-            GameObject myObj = Instantiate(cards[n]) as GameObject;
+            for(int i=0;i<21; i++)
+        { 
+            GameObject myObj = Instantiate(cards[i]) as GameObject;
             // cards.Remove(cards[whichItem]);
             numSpawned++;
             Vector3 newtransform = new Vector3(x, y, 0);
             myObj.transform.position = transform.position;
         }
-    
+    }
+
     public void Shuffle()
     {
                                 
