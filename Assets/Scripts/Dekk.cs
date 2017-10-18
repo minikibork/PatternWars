@@ -35,6 +35,24 @@ public class Dekk : MonoBehaviour
         myObj.transform.position = transform.position;//newtransform;
 
     }
+    public void PlaceCards()
+    {
+        if (numSpawned < numToSpawn)
+        {
+            for (int y = 0; y < cols; y++)
+            {
+                for (int x = 0; x < rows; x++)
+                {
+                    int i = Random.Range(0, cards.Count - 1);
+                    Vector3 spawnPos = new Vector3(Xstart + x * (1 + Xspace) + x, Ystart + y * (1 + Yspace) + y, 0);
+                    GameObject g = Instantiate(cards[i], spawnPos, Quaternion.identity) as GameObject;
+                    g.name = x + "/" + y; //coordinates for debuging purposes
+                    g.transform.parent = gameObject.transform;
+                }
+            }
+        }
+    }
+
 
     public void Shuffle()
     {
@@ -58,6 +76,7 @@ public class Dekk : MonoBehaviour
 
     }
 
+    
 
     // Use this for initialization
     void Awake()
@@ -68,56 +87,11 @@ public class Dekk : MonoBehaviour
     }
     void Start()
     {
-        if (numSpawned < numToSpawn)
-        {
-            for (int y = 0; y < cols; y++)
-            {
-                for (int x = 0; x < rows; x++)
-                {
-                    int i = Random.Range(0, cards.Count - 1);
-                    Vector3 spawnPos = new Vector3(Xstart + x * (1 + Xspace), Ystart + y * (1 + Yspace), 0);
-                    GameObject g = Instantiate(cards[i], spawnPos, Quaternion.identity) as GameObject;
-                    //g.name = x + "/" + y; //coordinates for debuging purposes
-                    g.transform.parent = gameObject.transform;
-                }
-            }
-        }
+        PlaceCards();
     }
     void Update()
     {
-        /*
-        if (numSpawned < numToSpawn) 
-        { 
-
-        for (int i = 0; i < 5; i++)
-            {
-                transform.position = new Vector3(i-5, 4f, 0);
-
-                PutInPlace();
-            }
-            for (int i = 5; i < 10; i++)
-            {
-
-            transform.position = new Vector3(i-10, 2f, 0);
-
-            PutInPlace();
-            }
-            for (int i = 10; i < 15; i++)
-            {
-
-             transform.position = new Vector3(i-15, 0, 0);
-
-            PutInPlace();
-            }
-
-            for (int i = 15; i < 21; i++)
-            {
-
-             transform.position = new Vector3(i-20 -2f, 0);
-
-            PutInPlace();
-            }
-            */
+        
     }
 
 }

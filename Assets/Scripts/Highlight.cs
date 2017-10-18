@@ -21,6 +21,7 @@ public class Highlight : MonoBehaviour {
     void Highlighting()
     {
         Debug.Log("I am clicked");
+        //Change sprites with Highlighted ones
     }
 
 
