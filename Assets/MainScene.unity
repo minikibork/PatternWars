@@ -202,8 +202,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 787cf024c04d1c9438d3c83c172ae01f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cols: 4
+  rows: 4
+  Xspace: 0
+  Yspace: 0
+  Xstart: 0
+  Ystart: 0
+  tile: {fileID: 0}
   start: {x: 0, y: 0, z: 0}
   startPosition: {x: 0, y: 0, z: 0}
+  x: 0
+  y: 0
 --- !u!4 &1199664667
 Transform:
   m_ObjectHideFlags: 0
