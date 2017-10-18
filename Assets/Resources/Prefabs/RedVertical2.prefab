@@ -21,8 +21,8 @@ GameObject:
   - component: {fileID: 4458640391971486}
   - component: {fileID: 212042603690900208}
   - component: {fileID: 61507507082382806}
-  - component: {fileID: 114062146990943178}
   - component: {fileID: 114940605499011332}
+  - component: {fileID: 114210279216544180}
   m_Layer: 0
   m_Name: RedVertical2
   m_TagString: Card
@@ -68,7 +68,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.12, y: 1.08}
   m_EdgeRadius: 0
---- !u!114 &114062146990943178
+--- !u!114 &114210279216544180
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -79,6 +79,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fce759c47f09cf44b8acacf6f8bf5b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectedCards: 
+  cardIndexCopy: 0
 --- !u!114 &114940605499011332
 MonoBehaviour:
   m_ObjectHideFlags: 1

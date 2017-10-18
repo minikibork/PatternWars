@@ -21,8 +21,8 @@ GameObject:
   - component: {fileID: 4458781634096638}
   - component: {fileID: 212411545716513858}
   - component: {fileID: 61341928231839324}
-  - component: {fileID: 114416992336820170}
   - component: {fileID: 114360492548201610}
+  - component: {fileID: 114560412685518252}
   m_Layer: 0
   m_Name: RedPlus
   m_TagString: Card
@@ -80,7 +80,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardIndex: 12
---- !u!114 &114416992336820170
+--- !u!114 &114560412685518252
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -91,6 +91,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fce759c47f09cf44b8acacf6f8bf5b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectedCards: 
+  cardIndexCopy: 0
 --- !u!212 &212411545716513858
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -21,8 +21,8 @@ GameObject:
   - component: {fileID: 4891571915019218}
   - component: {fileID: 212116105190402536}
   - component: {fileID: 61419087906009758}
-  - component: {fileID: 114880874666769242}
   - component: {fileID: 114426107415920750}
+  - component: {fileID: 114794703478060752}
   m_Layer: 0
   m_Name: MultiMinus
   m_TagString: Card
@@ -80,7 +80,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardIndex: 17
---- !u!114 &114880874666769242
+--- !u!114 &114794703478060752
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -91,6 +91,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fce759c47f09cf44b8acacf6f8bf5b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectedCards: 
+  cardIndexCopy: 0
 --- !u!212 &212116105190402536
 SpriteRenderer:
   m_ObjectHideFlags: 1

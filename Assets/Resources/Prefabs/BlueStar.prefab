@@ -22,8 +22,8 @@ GameObject:
   - component: {fileID: 212687196369743272}
   - component: {fileID: 222802756410206236}
   - component: {fileID: 61792293825522666}
-  - component: {fileID: 114120837417269874}
   - component: {fileID: 114095887629271522}
+  - component: {fileID: 114379283435609940}
   m_Layer: 0
   m_Name: BlueStar
   m_TagString: Card
@@ -68,7 +68,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardIndex: 7
---- !u!114 &114120837417269874
+--- !u!114 &114379283435609940
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -79,6 +79,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fce759c47f09cf44b8acacf6f8bf5b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectedCards: 
+  cardIndexCopy: 0
 --- !u!212 &212687196369743272
 SpriteRenderer:
   m_ObjectHideFlags: 1

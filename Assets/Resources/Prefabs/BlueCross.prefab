@@ -22,8 +22,8 @@ GameObject:
   - component: {fileID: 212995806212877134}
   - component: {fileID: 222866022675427712}
   - component: {fileID: 61718829560465774}
-  - component: {fileID: 114366080331886984}
   - component: {fileID: 114284654152730026}
+  - component: {fileID: 114683606337459654}
   m_Layer: 0
   m_Name: BlueCross
   m_TagString: Card
@@ -68,7 +68,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardIndex: 6
---- !u!114 &114366080331886984
+--- !u!114 &114683606337459654
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -79,6 +79,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fce759c47f09cf44b8acacf6f8bf5b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectedCards: 
+  cardIndexCopy: 0
 --- !u!212 &212995806212877134
 SpriteRenderer:
   m_ObjectHideFlags: 1

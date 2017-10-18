@@ -21,8 +21,8 @@ GameObject:
   - component: {fileID: 4041141481900014}
   - component: {fileID: 212609597986573150}
   - component: {fileID: 61066039009372530}
-  - component: {fileID: 114455751304519860}
   - component: {fileID: 114602176478692210}
+  - component: {fileID: 114168428888351410}
   m_Layer: 0
   m_Name: MultiPlus
   m_TagString: Card
@@ -68,7 +68,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.08, y: 1.12}
   m_EdgeRadius: 0
---- !u!114 &114455751304519860
+--- !u!114 &114168428888351410
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -79,6 +79,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fce759c47f09cf44b8acacf6f8bf5b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectedCards: 
+  cardIndexCopy: 0
 --- !u!114 &114602176478692210
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -21,8 +21,8 @@ GameObject:
   - component: {fileID: 4130801570900788}
   - component: {fileID: 212596404093525568}
   - component: {fileID: 61098663225336644}
-  - component: {fileID: 114162769891541770}
   - component: {fileID: 114053508665324150}
+  - component: {fileID: 114666991939630316}
   m_Layer: 0
   m_Name: MultiVertical
   m_TagString: Card
@@ -80,7 +80,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardIndex: 16
---- !u!114 &114162769891541770
+--- !u!114 &114666991939630316
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -91,6 +91,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fce759c47f09cf44b8acacf6f8bf5b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectedCards: 
+  cardIndexCopy: 0
 --- !u!212 &212596404093525568
 SpriteRenderer:
   m_ObjectHideFlags: 1

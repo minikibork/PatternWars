@@ -21,8 +21,8 @@ GameObject:
   - component: {fileID: 4133430754054972}
   - component: {fileID: 212587206061874844}
   - component: {fileID: 61768700269331002}
-  - component: {fileID: 114580077856743478}
   - component: {fileID: 114212457121586426}
+  - component: {fileID: 114115419380621344}
   m_Layer: 0
   m_Name: MultiCross
   m_TagString: Card
@@ -68,6 +68,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.08, y: 1.12}
   m_EdgeRadius: 0
+--- !u!114 &114115419380621344
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1792077832205806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fce759c47f09cf44b8acacf6f8bf5b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedCards: 
+  cardIndexCopy: 0
 --- !u!114 &114212457121586426
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -80,17 +93,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardIndex: 20
---- !u!114 &114580077856743478
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1792077832205806}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8fce759c47f09cf44b8acacf6f8bf5b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &212587206061874844
 SpriteRenderer:
   m_ObjectHideFlags: 1

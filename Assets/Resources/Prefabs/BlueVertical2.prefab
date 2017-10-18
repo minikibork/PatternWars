@@ -22,8 +22,8 @@ GameObject:
   - component: {fileID: 212694645748110432}
   - component: {fileID: 222269968114386402}
   - component: {fileID: 61346219046635100}
-  - component: {fileID: 114235317992116096}
   - component: {fileID: 114105138589494728}
+  - component: {fileID: 114902642495516232}
   m_Layer: 0
   m_Name: BlueVertical2
   m_TagString: Card
@@ -68,7 +68,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardIndex: 2
---- !u!114 &114235317992116096
+--- !u!114 &114902642495516232
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -79,6 +79,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fce759c47f09cf44b8acacf6f8bf5b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectedCards: 
+  cardIndexCopy: 0
 --- !u!212 &212694645748110432
 SpriteRenderer:
   m_ObjectHideFlags: 1
