@@ -22,6 +22,8 @@ GameObject:
   - component: {fileID: 212335277418283176}
   - component: {fileID: 222339770919729132}
   - component: {fileID: 61194885114955004}
+  - component: {fileID: 114702696616324076}
+  - component: {fileID: 114658213860476156}
   m_Layer: 0
   m_Name: BlueMinus
   m_TagString: Card
@@ -54,6 +56,29 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.12, y: 1.08}
   m_EdgeRadius: 0
+--- !u!114 &114658213860476156
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1650375350179632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08768b9320e6f9d4abbac2519e2c2bb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardIndex: 3
+--- !u!114 &114702696616324076
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1650375350179632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fce759c47f09cf44b8acacf6f8bf5b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212335277418283176
 SpriteRenderer:
   m_ObjectHideFlags: 1

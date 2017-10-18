@@ -21,6 +21,8 @@ GameObject:
   - component: {fileID: 4509247962911684}
   - component: {fileID: 212551967408508792}
   - component: {fileID: 61516643939389714}
+  - component: {fileID: 114461559788915318}
+  - component: {fileID: 114286713457100136}
   m_Layer: 0
   m_Name: MultiUpLine
   m_TagString: Card
@@ -66,6 +68,29 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.08, y: 1.12}
   m_EdgeRadius: 0
+--- !u!114 &114286713457100136
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1959455045064946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08768b9320e6f9d4abbac2519e2c2bb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardIndex: 18
+--- !u!114 &114461559788915318
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1959455045064946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fce759c47f09cf44b8acacf6f8bf5b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212551967408508792
 SpriteRenderer:
   m_ObjectHideFlags: 1

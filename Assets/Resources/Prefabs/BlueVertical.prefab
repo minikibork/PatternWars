@@ -22,6 +22,8 @@ GameObject:
   - component: {fileID: 212674277338311034}
   - component: {fileID: 222261459925595098}
   - component: {fileID: 61726060571005370}
+  - component: {fileID: 114700829162544866}
+  - component: {fileID: 114514595823265902}
   m_Layer: 0
   m_Name: BlueVertical
   m_TagString: Card
@@ -54,6 +56,29 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.12, y: 1.08}
   m_EdgeRadius: 0
+--- !u!114 &114514595823265902
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1285520268146004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08768b9320e6f9d4abbac2519e2c2bb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardIndex: 1
+--- !u!114 &114700829162544866
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1285520268146004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fce759c47f09cf44b8acacf6f8bf5b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212674277338311034
 SpriteRenderer:
   m_ObjectHideFlags: 1

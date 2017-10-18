@@ -10,12 +10,14 @@ public class EventManager : MonoBehaviour, IPointerDownHandler
     PointerEventData cardIndex;
     GameObject cardy;
     CardInformation cards;
+    public int cardIndexCopy;
     public virtual void OnPointerDown(PointerEventData eventData)
     {
         cards = GetComponent<CardInformation>();
+        cardIndexCopy = cards.cardIndex;
        // cardIndex = eventData.rawPointerPress;
         cardy = eventData.selectedObject.GetComponent<GameObject>();
-        Debug.Log(cardy);
+        Debug.Log(cardIndexCopy);
         if (OnClick != null)
         {
             OnClick();

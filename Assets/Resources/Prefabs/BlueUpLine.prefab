@@ -22,6 +22,8 @@ GameObject:
   - component: {fileID: 212443626305289598}
   - component: {fileID: 222566828423139306}
   - component: {fileID: 61634607906579870}
+  - component: {fileID: 114600091095997764}
+  - component: {fileID: 114192949204112418}
   m_Layer: 0
   m_Name: BlueUpLine
   m_TagString: Card
@@ -54,6 +56,29 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.12, y: 1.08}
   m_EdgeRadius: 0
+--- !u!114 &114192949204112418
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1370491520659472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08768b9320e6f9d4abbac2519e2c2bb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardIndex: 4
+--- !u!114 &114600091095997764
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1370491520659472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fce759c47f09cf44b8acacf6f8bf5b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212443626305289598
 SpriteRenderer:
   m_ObjectHideFlags: 1
