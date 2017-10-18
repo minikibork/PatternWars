@@ -22,10 +22,9 @@ GameObject:
   - component: {fileID: 212687196369743272}
   - component: {fileID: 222802756410206236}
   - component: {fileID: 61792293825522666}
-  - component: {fileID: 114996914031864152}
   m_Layer: 0
   m_Name: BlueStar
-  m_TagString: Untagged
+  m_TagString: Card
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -55,17 +54,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.12, y: 1.08}
   m_EdgeRadius: 0
---- !u!114 &114996914031864152
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1756868805862188}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8fce759c47f09cf44b8acacf6f8bf5b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &212687196369743272
 SpriteRenderer:
   m_ObjectHideFlags: 1

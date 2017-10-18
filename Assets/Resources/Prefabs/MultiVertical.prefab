@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 61098663225336644}
   m_Layer: 0
   m_Name: MultiVertical
-  m_TagString: Untagged
+  m_TagString: Card
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

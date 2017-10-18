@@ -5,25 +5,18 @@ using UnityEngine;
 public class Dekk : MonoBehaviour
 {
 
-    public static List<GameObject> cards = new List<GameObject>();
+    public List<GameObject> cards = new List<GameObject>();
     public static int numSpawned = 0;
     int numToSpawn = 21;
-
+    public int i;
 
     public int cols;
     public int rows;
-    // spacing variable 
     public float Xspace;
     public float Yspace;
-    //point where the first tile is made
     public float Xstart;
     public float Ystart;
-    public GameObject tile;
-
-    //public GameObject CardPrefab;
-    //public float CardOffset;
-    public Vector3 start, startPosition;
-    public float x, y;
+    
     public void PutInPlace()
     {
 
@@ -31,7 +24,6 @@ public class Dekk : MonoBehaviour
         GameObject myObj = Instantiate(cards[i]) as GameObject;
         cards.Remove(cards[i]);
         numSpawned++;
-        Vector3 newtransform = new Vector3(x, y, 0);
         myObj.transform.position = transform.position;//newtransform;
 
     }
@@ -43,11 +35,16 @@ public class Dekk : MonoBehaviour
             {
                 for (int x = 0; x < rows; x++)
                 {
-                    int i = Random.Range(0, cards.Count - 1);
+                    i = Random.Range(0, cards.Count - 1);
                     Vector3 spawnPos = new Vector3(Xstart + x * (1 + Xspace) + x, Ystart + y * (1 + Yspace) + y, 0);
                     GameObject g = Instantiate(cards[i], spawnPos, Quaternion.identity) as GameObject;
                     g.name = x + "/" + y; //coordinates for debuging purposes
                     g.transform.parent = gameObject.transform;
+                    if (y == cols - 1 && x == rows - 1)
+                    {
+                        Debug.Log("Game is ready");
+                        Debug.Log(cards.Count);
+                    }
                 }
             }
         }

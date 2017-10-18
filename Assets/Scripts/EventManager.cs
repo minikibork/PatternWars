@@ -1,19 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class EventManager : MonoBehaviour {
+using UnityEngine.EventSystems;
+public class EventManager : MonoBehaviour, IPointerDownHandler
+{
 
     public delegate void ClickAction();
     public static event ClickAction OnClick;
-
-    void OnMouseDown()
+    PointerEventData cardIndex;
+    GameObject cardy;
+    CardInformation cards;
+    public virtual void OnPointerDown(PointerEventData eventData)
     {
-        
+        cards = GetComponent<CardInformation>();
+       // cardIndex = eventData.rawPointerPress;
+        cardy = eventData.selectedObject.GetComponent<GameObject>();
+        Debug.Log(cardy);
         if (OnClick != null)
         {
             OnClick();
         }
+       
     }
 
 }
