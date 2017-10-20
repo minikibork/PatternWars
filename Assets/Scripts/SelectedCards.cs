@@ -9,7 +9,7 @@ public class SelectedCards : MonoBehaviour {
     //public int cardIndexCopyCopy;
     public CardInformation cardIndexSelected;
     private EventManager selectedCard;
-
+    public GameObject SendButtonPlease;
     void OnEnable()
     {
         EventManager.OnClick += SelectedCardsList;
@@ -30,8 +30,7 @@ public class SelectedCards : MonoBehaviour {
 
         cardIndexSelected = gameObject.GetComponentInChildren<CardInformation>();
         //selectedCard = gameObject.GetComponentInChildren<EventManager>();
-       
-
+        CheckForValidLenght();
     }
 
     void SelectedCardsList()
@@ -45,8 +44,22 @@ public class SelectedCards : MonoBehaviour {
 
     }
 
-	// Update is called once per frame
-	
+
+    void CheckForValidLenght()
+    {
+        if (selectedCards.Count < 3)
+        {
+            SendButtonPlease.SetActive(false);
+
+        }
+        else
+        {
+            SendButtonPlease.SetActive(true);
+        }
+    }
+
+    // Update is called once per frame
+
 }
 //  cardIndexCopy = selectedCard.cardIndexCopy;
 // cardIndexCopyCopy = cardIndexSelected.cardIndex;

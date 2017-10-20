@@ -10,17 +10,6 @@ public class Combinations : MonoBehaviour {
     public List<GameObject> work = new List<GameObject>();
     // Use this for initialization
     public GameObject[] respawns;
-
-    void OnEnable()
-    {
-        EventManager.OnClick += CheckedClick;
-    }
-
-    void OnDisable()
-    {
-        EventManager.OnClick -= CheckedClick;
-
-    }
     
     void Start () {
         deck = GetComponent<Dekk>();
