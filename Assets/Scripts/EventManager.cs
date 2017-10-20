@@ -5,41 +5,64 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 public class EventManager : MonoBehaviour, IPointerDownHandler
 {
-
+    
     public delegate void ClickAction();
     public static event ClickAction OnClick;
-    /*
-   public List<int> selectedCards = new List<int>();
-   // public int[] selected = new int[]
-
-   public PointerEventData cardIndex;
-   public GameObject cardy;
-   public CardInformation cards;
-   public static int n=0;
-   public int cardIndexCopy;
-   public static int cardIndexCopy2;
-   public bool isSelected;
-   */
-
+    public GameObject SendButton;
     public GameObject DeckFill;
-    SelectedCards indexToAdd;
-    CardInformation cardIndexToAdd;
+    public SelectedCards listOfSelectedCards;
+    public CardInformation cardIndexToAdd;
+    public bool isSelected;
+
+    public GameObject lastPressed;
     void Start()
     {
-        //isSelected = false;
+        
+        isSelected = false;
         
     }
 
     public virtual void OnPointerDown(PointerEventData eventData)
     {
-        DeckFill = GameObject.FindGameObjectWithTag("Deck");
-        cardIndexToAdd = GetComponent<CardInformation>();
-        indexToAdd = DeckFill.GetComponent<SelectedCards>();
-        indexToAdd.selectedCards.Insert(0,cardIndexToAdd.cardIndex);
-        Debug.Log("§§§§§§§§§§§§§§§§§§§§§§§§§§§");
+        lastPressed = eventData.lastPress;
+        Debug.Log(lastPressed);
+        ListForSelectedCardsFill();
     }
 
+    void ListForSelectedCardsFill()
+    {
+        if(isSelected == false)
+        { 
+            DeckFill = GameObject.FindGameObjectWithTag("Deck");
+            cardIndexToAdd = GetComponent<CardInformation>();
+            listOfSelectedCards = DeckFill.GetComponent<SelectedCards>();
+            
+            if(listOfSelectedCards.selectedCards.Count < 5)
+            {
+                listOfSelectedCards.selectedCards.Insert(0, cardIndexToAdd.cardIndex);
+                
+            }
+            if(listOfSelectedCards.selectedCards.Count == 5)
+            {
+                Debug.Log("Maximum cards inputed");
+            }
+            /*
+             if(listOfSelectedCards.selectedCards.Count < 3)
+             {
+                 SendButton.SetActive(false);
+             }
+             else
+             {
+                 SendButton.SetActive(true);
+             }
+             */
+            isSelected = true;
+        }
+    }
 }
+
+
+
 // GameObject.FindGameObjectWithTag("Deck").GetComponent<SelectedCards>().selectedCards.Add(GetComponent<CardInformation>().cardIndex);
 /*
 if (OnClick != null)
@@ -61,7 +84,27 @@ if (OnClick != null)
 //Debug.Log(cardIndexCopy);
 //Debug.Log(selectedCards.Count);
 
+/*
+if(isSelected == false)
+    { 
 
+        DeckFill = GameObject.FindGameObjectWithTag("Deck");
+        cardIndexToAdd = GetComponent<CardInformation>();
+        listOfSelectedCards = DeckFill.GetComponent<SelectedCards>();
+
+        if(listOfSelectedCards.selectedCards.Count < 5)
+        {
+            listOfSelectedCards.selectedCards.Insert(0, cardIndexToAdd.cardIndex);
+
+        }
+        if(listOfSelectedCards.selectedCards.Count == 5)
+        {
+            Debug.Log("Maximum cards inputed");
+        }
+
+        isSelected = true;
+    }
+*/
 
 
 
