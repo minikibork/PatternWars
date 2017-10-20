@@ -6,27 +6,32 @@ public class Combinations : MonoBehaviour {
     Dekk deck;
     List<int> toInspect = new List<int>() { 1, 2, 3 };
     List<int> hello = new List<int>() { 1, 2, 4 };
-   //List<hell   > hello2 = new List<List<>>();
+    SelectedCards listOfSelectedCards;
+    //List<hell   > hello2 = new List<List<>>();
     public List<GameObject> work = new List<GameObject>();
     // Use this for initialization
     public GameObject[] respawns;
-    
+    public bool isLegit = true;
     void Start () {
         deck = GetComponent<Dekk>();
         //work = deck.cards;
-       
-        
-        respawns = GameObject.FindGameObjectsWithTag("Card");
+        listOfSelectedCards = GetComponent<SelectedCards>();
+       // respawns = GameObject.FindGameObjectsWithTag("Card");
     }
     
     void Update()
     {
         
     }
-            void CheckedClick()
+            void LegitCombination()
     {
 
         
+    }
+
+    void Combination2s()
+    {
+
     }
     // Update is called once per frame
     

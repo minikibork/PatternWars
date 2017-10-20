@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 public class EventManager : MonoBehaviour, IPointerDownHandler
 {
-
+    
     public delegate void ClickAction();
     public static event ClickAction OnClick;
     public GameObject SendButton;
@@ -13,15 +13,19 @@ public class EventManager : MonoBehaviour, IPointerDownHandler
     public SelectedCards listOfSelectedCards;
     public CardInformation cardIndexToAdd;
     public bool isSelected;
+
+    public GameObject lastPressed;
     void Start()
     {
-        SendButton.SetActive(false);
+        
         isSelected = false;
         
     }
 
     public virtual void OnPointerDown(PointerEventData eventData)
     {
+        lastPressed = eventData.lastPress;
+        Debug.Log(lastPressed);
         ListForSelectedCardsFill();
     }
 
@@ -29,7 +33,6 @@ public class EventManager : MonoBehaviour, IPointerDownHandler
     {
         if(isSelected == false)
         { 
-            
             DeckFill = GameObject.FindGameObjectWithTag("Deck");
             cardIndexToAdd = GetComponent<CardInformation>();
             listOfSelectedCards = DeckFill.GetComponent<SelectedCards>();

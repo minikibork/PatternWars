@@ -261,6 +261,7 @@ GameObject:
   - component: {fileID: 1199664667}
   - component: {fileID: 1199664666}
   - component: {fileID: 1199664668}
+  - component: {fileID: 1199664669}
   m_Layer: 0
   m_Name: DeckBuilding
   m_TagString: Deck
@@ -281,8 +282,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cards: []
   i: 0
-  cols: 5
-  rows: 5
+  cols: 4
+  rows: 4
   Xspace: 1
   Yspace: 1
   Xstart: -5
@@ -315,6 +316,22 @@ MonoBehaviour:
   cardIndexCopy: 0
   cardIndexSelected: {fileID: 0}
   SendButtonPlease: {fileID: 367441892}
+  childTransform: {fileID: 0}
+  Combinations: {fileID: 0}
+--- !u!114 &1199664669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1199664665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16e06a47e56662d47a9547d921dc211a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  work: []
+  respawns: []
+  isLegit: 1
 --- !u!1 &1577036223
 GameObject:
   m_ObjectHideFlags: 0

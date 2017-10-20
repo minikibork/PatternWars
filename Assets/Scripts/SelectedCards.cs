@@ -4,47 +4,44 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class SelectedCards : MonoBehaviour {
-    public List<int> selectedCards = new List<int>();
+    public List<int> selectedCards = new List<int>(); //refactor, put in deck script the whole thing
     public int cardIndexCopy;
     //public int cardIndexCopyCopy;
     public CardInformation cardIndexSelected;
     private EventManager selectedCard;
+    GameObject Deck;
     public GameObject SendButtonPlease;
-    void OnEnable()
-    {
-        EventManager.OnClick += SelectedCardsList;
-    }
+    public Transform childTransform;
+    public Combinations Combinations;
 
-    void OnDisable()
-    {
-        EventManager.OnClick -= SelectedCardsList;
-
-    }
     // Use this for initialization
     void Start () {
-        
+        Deck = GameObject.FindGameObjectWithTag("Deck");
+        Combinations = Deck.GetComponent<Combinations>();
+
+
+
     }
 
     void Update()
     {
-
+        
         cardIndexSelected = gameObject.GetComponentInChildren<CardInformation>();
-        //selectedCard = gameObject.GetComponentInChildren<EventManager>();
+        childTransform = gameObject.GetComponentInChildren<Transform>();
+        
+
         CheckForValidLenght();
+        ReplaceCards();
     }
 
-    void SelectedCardsList()
+    void ReplaceCards()
     {
-
-        cardIndexCopy = cardIndexSelected.cardIndex;
-        selectedCards.Add(cardIndexCopy);
-        Debug.Log(cardIndexCopy);
-        //Debug.Log(selectedCards.Count);
-
-
+        if (Combinations.isLegit == false)//placeholder
+        {
+            
+        }
     }
-
-
+    
     void CheckForValidLenght()
     {
         if (selectedCards.Count < 3)
