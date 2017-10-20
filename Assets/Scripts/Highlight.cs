@@ -13,17 +13,17 @@ public class Highlight : MonoBehaviour
     public CardInformation cards;
     public int cardIndexCopy;
     PointerEventData eventData;
-    void OnEnable()
-    {
-        EventManager.OnClick += Highlighting;
-    }
+    /* void OnEnable()
+     {
+         EventManager.OnClick += Highlighting;
+     }
 
-    void OnDisable()
-    {
-        EventManager.OnClick -= Highlighting;
-        
-    }
+     void OnDisable()
+     {
+         EventManager.OnClick -= Highlighting;
 
+     }
+     */
     void Start()
     {
         deck = GetComponent<Dekk>();
