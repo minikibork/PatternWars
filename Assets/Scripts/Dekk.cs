@@ -29,8 +29,7 @@ public class Dekk : MonoBehaviour
     }
     public void PlaceCards()
     {
-        if (numSpawned < numToSpawn)
-        {
+        
             for (int y = 0; y < cols; y++)
             {
                 for (int x = 0; x < rows; x++)
@@ -47,7 +46,7 @@ public class Dekk : MonoBehaviour
                     }
                 }
             }
-        }
+        
     }
 
 
