@@ -13,7 +13,7 @@ public class EventManager : MonoBehaviour, IPointerDownHandler
     public SelectedCards listOfSelectedCards;
     public CardInformation cardIndexToAdd;
     public bool isSelected;
-
+    public Vector3 selectedCardTransform;
     public GameObject lastPressed;
     void Start()
     {
@@ -24,9 +24,14 @@ public class EventManager : MonoBehaviour, IPointerDownHandler
 
     public virtual void OnPointerDown(PointerEventData eventData)
     {
-        lastPressed = eventData.lastPress;
-        Debug.Log(lastPressed);
         ListForSelectedCardsFill();
+        lastPressed = eventData.lastPress;
+        selectedCardTransform = transform.position;
+        //Instantiate(OBJECTIWANT, selectedCardTransform, Quaternion.identity) as GameObject;
+        
+       
+        
+
     }
 
     void ListForSelectedCardsFill()
