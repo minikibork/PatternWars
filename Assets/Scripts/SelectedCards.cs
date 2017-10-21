@@ -5,6 +5,7 @@ using UnityEngine.EventSystems;
 
 public class SelectedCards : MonoBehaviour {
     public List<int> selectedCards = new List<int>(); //refactor, put in deck script the whole thing
+    public List<int> selectedCardsColors = new List<int>();
     public int cardIndexCopy;
     //public int cardIndexCopyCopy;
     public CardInformation cardIndexSelected;
@@ -51,15 +52,14 @@ public class SelectedCards : MonoBehaviour {
         }
         else
         {
+            ColorCheck();
             SendButtonPlease.SetActive(true);
         }
     }
 
-    // Update is called once per frame
+    void ColorCheck()
+    {
 
+    }
+   
 }
-//  cardIndexCopy = selectedCard.cardIndexCopy;
-// cardIndexCopyCopy = cardIndexSelected.cardIndex;
-//cardIndexCopy = cardIndexSelected.cardIndexCopy;
-//selectedCards.Insert(0, cardIndexCopy);
-//cardIndexSelected = GetComponent<EventManager>();

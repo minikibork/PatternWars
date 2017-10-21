@@ -24,14 +24,15 @@ public class SendButton : MonoBehaviour, IPointerDownHandler{
     // Update is called once per frame
     void Update () {
 
-        CheckForValidLenght();
+        //CheckForValidLenght();
     }
 
 
     void CheckForValidLenght()
     {
-        listOfSelectedCards = DeckFill.GetComponent<SelectedCards>();
         DeckFill = GameObject.FindGameObjectWithTag("Deck");
+        listOfSelectedCards = DeckFill.GetComponent<SelectedCards>();
+      
 
         if (listOfSelectedCards.selectedCards.Count < 3)
         {
@@ -59,7 +60,7 @@ public class SendButton : MonoBehaviour, IPointerDownHandler{
             listOfSelectedCards.selectedCards.Insert(0, 0);
         }
 
-        listOfSelectedCards.selectedCards.Sort();
+            listOfSelectedCards.selectedCards.Sort();
             Debug.Log(listOfSelectedCards.selectedCards[0]);
             Debug.Log(listOfSelectedCards.selectedCards[1]);
             Debug.Log(listOfSelectedCards.selectedCards[2]);
@@ -74,8 +75,3 @@ public class SendButton : MonoBehaviour, IPointerDownHandler{
 
     }
 }
-/*f(listOfSelectedCards.selectedCards.Count < 3)
-                {
-                    listOfSelectedCards.selectedCards.Insert(0, 0);
-                     Debug.Log("vlqzohme i tuka daje");
-                }*/

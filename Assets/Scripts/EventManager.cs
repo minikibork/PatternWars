@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 public class EventManager : MonoBehaviour, IPointerDownHandler
 {
-    
+    public List<GameObject> cards = new List<GameObject>();
     public delegate void ClickAction();
     public static event ClickAction OnClick;
     public GameObject SendButton;
@@ -13,8 +13,13 @@ public class EventManager : MonoBehaviour, IPointerDownHandler
     public SelectedCards listOfSelectedCards;
     public CardInformation cardIndexToAdd;
     public bool isSelected;
+
     public Vector3 selectedCardTransform;
     public GameObject lastPressed;
+    public Dekk deck;
+    GameObject decky;
+    public int n;
+    
     void Start()
     {
         
@@ -25,13 +30,20 @@ public class EventManager : MonoBehaviour, IPointerDownHandler
     public virtual void OnPointerDown(PointerEventData eventData)
     {
         ListForSelectedCardsFill();
-        lastPressed = eventData.lastPress;
-        selectedCardTransform = transform.position;
-        //Instantiate(OBJECTIWANT, selectedCardTransform, Quaternion.identity) as GameObject;
+        //lastPressed = eventData.lastPress;
+        //ReplaceAndDestroyCards(isSelected);
         
-       
-        
+    }
+    void ReplaceAndDestroyCards(bool Hello) //TO BE FINISHED AFTER COMBINATIONS
+    {
+        decky = GameObject.FindGameObjectWithTag("Deck");
+        deck = decky.GetComponent<Dekk>();
 
+        selectedCardTransform = transform.position;
+        //Debug.Log(selectedCardTransform);
+        n++;
+        GameObject g = Instantiate(deck.cards[n], selectedCardTransform, Quaternion.identity) as GameObject;
+        Debug.Log(deck.cards[n]);
     }
 
     void ListForSelectedCardsFill()
@@ -45,12 +57,15 @@ public class EventManager : MonoBehaviour, IPointerDownHandler
             if(listOfSelectedCards.selectedCards.Count < 5)
             {
                 listOfSelectedCards.selectedCards.Insert(0, cardIndexToAdd.cardIndex);
-                
+                listOfSelectedCards.selectedCardsColors.Insert(0, cardIndexToAdd.color);
             }
             if(listOfSelectedCards.selectedCards.Count == 5)
             {
-                Debug.Log("Maximum cards inputed");
+               // Debug.Log("Maximum cards inputed");
             }
+
+
+
             /*
              if(listOfSelectedCards.selectedCards.Count < 3)
              {
