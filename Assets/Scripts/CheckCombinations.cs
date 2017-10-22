@@ -37,7 +37,7 @@ public class CheckCombinations : MonoBehaviour, IPointerDownHandler
     public CardInformation cardIndexSelected;
     public Transform childTransform;
     public GameObject SendButtonPlease;
-
+    public bool legitCombination = false;
     void Start()
     {
         sendButton = sendButtonG.GetComponent<SendButton2>();
@@ -112,6 +112,7 @@ public class CheckCombinations : MonoBehaviour, IPointerDownHandler
                         Debug.Log("Valid Combination");
                         Debug.Log(i);
                         Debug.Log(TotalScore);
+                        legitCombination = true;
                         break;
 
                     }
@@ -121,14 +122,34 @@ public class CheckCombinations : MonoBehaviour, IPointerDownHandler
                 }
                  
             }
-
             listOfIndexes.Clear();
+
         }
         sendButton.hasBeenSend = false;
-
+      //  Debug.Log(legitCombination);
+        
     }
+    /*
+    public int n;
 
+    public Vector3[] selectedCardTransforms;
+    public EventManager eventy;
+    void ReplaceAndDestroyCards() //TO BE FINISHED AFTER COMBINATIONS
+    {
+        if (legitCombination == true)
+        {
+            selectedCardTransforms =  
+               eventy = GetComponent<EventManager>();
+            childTransform = transform.position;
 
+            //Debug.Log(selectedCardTransform);
+            n++;
+            GameObject g = Instantiate(deck.cards[n], childTransform, Quaternion.identity) as GameObject;
+            Debug.Log(deck.cards[n]);
+        }
+        legitCombination = false;
+    }
+    */
     void OptimalScore()
     {
 

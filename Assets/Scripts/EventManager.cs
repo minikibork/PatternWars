@@ -9,7 +9,7 @@ public class EventManager : MonoBehaviour, IPointerDownHandler
     public delegate void ClickAction();
     public static event ClickAction OnClick;
     public GameObject SendButton;
-    public GameObject DeckFill;
+    public GameObject deckFill;
     public SelectedCards listOfSelectedCards;
 
     public CheckCombinations listOfCards;
@@ -17,54 +17,102 @@ public class EventManager : MonoBehaviour, IPointerDownHandler
 
     public CardInformation cardIndexToAdd;
     public bool isSelected;
-
+    public bool isLegitCombination;
     public Vector3 selectedCardTransform;
+    public Vector3[] selectedCardTransforms;
     public GameObject lastPressed;
     public Dekk deck;
     GameObject decky;
+    public GameObject self;
     public int n;
-    
+    int i = 0;
     void Start()
     {
+        deckFill = GameObject.FindGameObjectWithTag("Deck");
+        listOfCards = deckFill.GetComponent<CheckCombinations>();
         
         isSelected = false;
         
     }
+    void Update()
+    {
+        /*
+        if(isSelected==true)
+        {
+            if (listOfCards.legitCombination == true)
+            { 
+            isLegitCombination = true;
+            }
+        } 
+        else
+        {
+            isLegitCombination = false;
+        }
+        */
+        ReplaceAndDestroyCards();
+        //Debug.Log(listOfCards.legitCombination);
 
+    }
     public virtual void OnPointerDown(PointerEventData eventData)
     {
+        //i++;
+        if(isSelected==false)
+        {
+            isSelected = true;
+            Debug.Log("isSelected - TRUE");
+        }
+        else
+        {
+            isSelected = false;
+
+            Debug.Log("isSelected - FALSE");
+        }
+       // selectedCardTransforms[i] = gameObject.transform.position;
         ListForSelectedCardsFill();
         //lastPressed = eventData.lastPress;
         //ReplaceAndDestroyCards(isSelected);
         
     }
-    void ReplaceAndDestroyCards(bool Hello) //TO BE FINISHED AFTER COMBINATIONS
+   void ReplaceAndDestroyCards()
     {
-        decky = GameObject.FindGameObjectWithTag("Deck");
-        deck = decky.GetComponent<Dekk>();
+        if (isSelected == true && listOfCards.legitCombination == true)
+        {
+            deckFill = GameObject.FindGameObjectWithTag("Deck");
+            deck = deckFill.GetComponent<Dekk>();
+            selectedCardTransform = transform.position;
+            i = Random.Range(0, deck.cards.Count);
+            GameObject g = Instantiate(deck.cards[i], selectedCardTransform, Quaternion.identity) as GameObject;
+            Debug.Log(deck.cards[i]);
+            deck.cards.Remove(deck.cards[i]);
+            Debug.Log(isLegitCombination);
+            Debug.Log(listOfCards.legitCombination);
+            listOfCards.legitCombination = false;
+            isSelected = false;
+            isLegitCombination = false;
+           
+            Destroy(self);
+            
+        }
 
-        selectedCardTransform = transform.position;
-        //Debug.Log(selectedCardTransform);
-        n++;
-        GameObject g = Instantiate(deck.cards[n], selectedCardTransform, Quaternion.identity) as GameObject;
-        Debug.Log(deck.cards[n]);
+        
+
     }
     void ColorInsert()
     {
-        DeckFill = GameObject.FindGameObjectWithTag("Deck");
+        deckFill = GameObject.FindGameObjectWithTag("Deck");
         cardIndexToAdd = GetComponent<CardInformation>();
-        listOfSelectedCards = DeckFill.GetComponent<SelectedCards>();
-        listOfCards = DeckFill.GetComponent<CheckCombinations>();
+        listOfSelectedCards = deckFill.GetComponent<SelectedCards>();
+        listOfCards = deckFill.GetComponent<CheckCombinations>();
 
     }
     void ListForSelectedCardsFill()
     {
-        if(isSelected == false)
+        if(isSelected == true)
         { 
-            DeckFill = GameObject.FindGameObjectWithTag("Deck");
+            deckFill = GameObject.FindGameObjectWithTag("Deck");
             cardIndexToAdd = GetComponent<CardInformation>();
-            listOfSelectedCards = DeckFill.GetComponent<SelectedCards>();
-            listOfCards = DeckFill.GetComponent<CheckCombinations>();
+            listOfSelectedCards = deckFill.GetComponent<SelectedCards>();
+            listOfCards = deckFill.GetComponent<CheckCombinations>();
             /*
             if (listOfSelectedCards.selectedCards.Count < 5)
             {
@@ -77,26 +125,14 @@ public class EventManager : MonoBehaviour, IPointerDownHandler
                 listOfCards.listOfIndexes.Insert(0, cardIndexToAdd.cardIndex);//fill the lists
                 listOfCards.listOfColors.Insert(0, cardIndexToAdd.color);//fill the lists
             }
-            if (listOfCards.listOfIndexes.Count == 5)
-            {
-               // Debug.Log("Maximum cards inputed");
             }
-
-
-
-            /*
-             if(listOfSelectedCards.selectedCards.Count < 3)
-             {
-                 SendButton.SetActive(false);
-             }
-             else
-             {
-                 SendButton.SetActive(true);
-             }
-             */
-            isSelected = true;
+        if (isSelected == false)
+        {
+            listOfCards.listOfIndexes.Remove(cardIndexToAdd.cardIndex);
         }
+
     }
+
 }
 
 
