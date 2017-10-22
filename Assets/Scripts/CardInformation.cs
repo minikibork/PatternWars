@@ -5,6 +5,6 @@ using UnityEngine;
 public class CardInformation : MonoBehaviour {
    
     public int cardIndex;
-
+    public int color;
     
 }
