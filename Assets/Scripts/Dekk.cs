@@ -34,11 +34,12 @@ public class Dekk : MonoBehaviour
             {
                 for (int x = 0; x < rows; x++)
                 {
-                    i = Random.Range(0, cards.Count - 1);
+                    i = Random.Range(0, cards.Count);
                     Vector3 spawnPos = new Vector3(Xstart + x * (1 + Xspace) + x, Ystart + y * (1 + Yspace) + y, 0);
                     GameObject g = Instantiate(cards[i], spawnPos, Quaternion.identity) as GameObject;
                     g.name = x + "/" + y; //coordinates for debuging purposes
                     g.transform.parent = gameObject.transform;
+                    cards.Remove(cards[i]);//NEW
                     if (y == cols - 1 && x == rows - 1)
                     {
                         Debug.Log("Game is ready");

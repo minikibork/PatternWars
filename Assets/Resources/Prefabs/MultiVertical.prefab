@@ -79,7 +79,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08768b9320e6f9d4abbac2519e2c2bb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardIndex: 16
+  cardIndex: 1
+  color: 2
 --- !u!114 &114666991939630316
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -91,11 +92,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fce759c47f09cf44b8acacf6f8bf5b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cards: []
   SendButton: {fileID: 1129113057951864, guid: 96cedba2b0c170040ba9dfcea2c814c7, type: 2}
-  DeckFill: {fileID: 0}
+  deckFill: {fileID: 0}
   listOfSelectedCards: {fileID: 0}
+  listOfCards: {fileID: 0}
   cardIndexToAdd: {fileID: 0}
   isSelected: 0
+  isLegitCombination: 0
+  selectedCardTransform: {x: 0, y: 0, z: 0}
+  selectedCardTransforms: []
+  lastPressed: {fileID: 0}
+  deck: {fileID: 0}
+  self: {fileID: 1250291939764956}
+  n: 0
 --- !u!212 &212596404093525568
 SpriteRenderer:
   m_ObjectHideFlags: 1

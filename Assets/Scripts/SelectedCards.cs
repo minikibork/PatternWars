@@ -5,24 +5,24 @@ using UnityEngine.EventSystems;
 
 public class SelectedCards : MonoBehaviour {
     public List<int> selectedCards = new List<int>(); //refactor, put in deck script the whole thing
+    public List<int> selectedCardsColors = new List<int>();
     public int cardIndexCopy;
     //public int cardIndexCopyCopy;
-    public CardInformation cardIndexSelected;
+   
     private EventManager selectedCard;
     GameObject Deck;
     public GameObject SendButtonPlease;
+    public CardInformation cardIndexSelected;
     public Transform childTransform;
     public Combinations Combinations;
-
+    CardInformation cardColorToAdd;
     // Use this for initialization
     void Start () {
         Deck = GameObject.FindGameObjectWithTag("Deck");
         Combinations = Deck.GetComponent<Combinations>();
-
-
-
     }
 
+  
     void Update()
     {
         
@@ -31,9 +31,9 @@ public class SelectedCards : MonoBehaviour {
         
 
         CheckForValidLenght();
-        ReplaceCards();
+        //ReplaceCards();
     }
-
+    /*
     void ReplaceCards()
     {
         if (Combinations.isLegit == false)//placeholder
@@ -41,7 +41,7 @@ public class SelectedCards : MonoBehaviour {
             
         }
     }
-    
+    */
     void CheckForValidLenght()
     {
         if (selectedCards.Count < 3)
@@ -51,15 +51,11 @@ public class SelectedCards : MonoBehaviour {
         }
         else
         {
+            
             SendButtonPlease.SetActive(true);
         }
     }
 
-    // Update is called once per frame
-
+   
+   
 }
-//  cardIndexCopy = selectedCard.cardIndexCopy;
-// cardIndexCopyCopy = cardIndexSelected.cardIndex;
-//cardIndexCopy = cardIndexSelected.cardIndexCopy;
-//selectedCards.Insert(0, cardIndexCopy);
-//cardIndexSelected = GetComponent<EventManager>();
