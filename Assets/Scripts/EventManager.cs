@@ -11,6 +11,10 @@ public class EventManager : MonoBehaviour, IPointerDownHandler
     public GameObject SendButton;
     public GameObject DeckFill;
     public SelectedCards listOfSelectedCards;
+
+    public CheckCombinations listOfCards;
+
+
     public CardInformation cardIndexToAdd;
     public bool isSelected;
 
@@ -50,9 +54,57 @@ public class EventManager : MonoBehaviour, IPointerDownHandler
         DeckFill = GameObject.FindGameObjectWithTag("Deck");
         cardIndexToAdd = GetComponent<CardInformation>();
         listOfSelectedCards = DeckFill.GetComponent<SelectedCards>();
-        
+        listOfCards = DeckFill.GetComponent<CheckCombinations>();
+
     }
     void ListForSelectedCardsFill()
+    {
+        if(isSelected == false)
+        { 
+            DeckFill = GameObject.FindGameObjectWithTag("Deck");
+            cardIndexToAdd = GetComponent<CardInformation>();
+            listOfSelectedCards = DeckFill.GetComponent<SelectedCards>();
+            listOfCards = DeckFill.GetComponent<CheckCombinations>();
+            /*
+            if (listOfSelectedCards.selectedCards.Count < 5)
+            {
+                listOfSelectedCards.selectedCards.Insert(0, cardIndexToAdd.cardIndex);//fill the lists
+                listOfSelectedCards.selectedCardsColors.Insert(0, cardIndexToAdd.color);//fill the lists
+            }
+            */
+            if (listOfCards.listOfIndexes.Count < 5)
+            {
+                listOfCards.listOfIndexes.Insert(0, cardIndexToAdd.cardIndex);//fill the lists
+                listOfCards.listOfColors.Insert(0, cardIndexToAdd.color);//fill the lists
+            }
+            if (listOfCards.listOfIndexes.Count == 5)
+            {
+               // Debug.Log("Maximum cards inputed");
+            }
+
+
+
+            /*
+             if(listOfSelectedCards.selectedCards.Count < 3)
+             {
+                 SendButton.SetActive(false);
+             }
+             else
+             {
+                 SendButton.SetActive(true);
+             }
+             */
+            isSelected = true;
+        }
+    }
+}
+
+
+
+// GameObject.FindGameObjectWithTag("Deck").GetComponent<SelectedCards>().selectedCards.Add(GetComponent<CardInformation>().cardIndex);
+/*
+
+void ListForSelectedCardsFill()
     {
         if(isSelected == false)
         { 
@@ -82,22 +134,22 @@ public class EventManager : MonoBehaviour, IPointerDownHandler
              {
                  SendButton.SetActive(true);
              }
-             */
-            isSelected = true;
+            
+isSelected = true;
         }
     }
-}
-
-
-
-// GameObject.FindGameObjectWithTag("Deck").GetComponent<SelectedCards>().selectedCards.Add(GetComponent<CardInformation>().cardIndex);
-/*
-if (OnClick != null)
+    
+    
+    if (OnClick != null)
 {
     Debug.Log(gameObject.name);
     OnClick();
 }
-*/
+
+     */
+
+
+
 // cards = GetComponent<CardInformation>();   //within the same object, thats why we dont need to specify object
 // cardy = eventData.selectedObject;
 //cardIndexCopy = cards.cardIndex;

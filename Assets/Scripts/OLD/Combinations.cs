@@ -1,14 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/*
 [System.Serializable]
 public struct cardLists
 {
     public List<int> combination;
     public int score;
 }
-
+*/
 public class Combinations : MonoBehaviour {
     Dekk deck;
     public int TotalScore;

@@ -8,10 +8,11 @@ public class SelectedCards : MonoBehaviour {
     public List<int> selectedCardsColors = new List<int>();
     public int cardIndexCopy;
     //public int cardIndexCopyCopy;
-    public CardInformation cardIndexSelected;
+   
     private EventManager selectedCard;
     GameObject Deck;
     public GameObject SendButtonPlease;
+    public CardInformation cardIndexSelected;
     public Transform childTransform;
     public Combinations Combinations;
     CardInformation cardColorToAdd;
@@ -30,9 +31,9 @@ public class SelectedCards : MonoBehaviour {
         
 
         CheckForValidLenght();
-        ReplaceCards();
+        //ReplaceCards();
     }
-
+    /*
     void ReplaceCards()
     {
         if (Combinations.isLegit == false)//placeholder
@@ -40,7 +41,7 @@ public class SelectedCards : MonoBehaviour {
             
         }
     }
-    
+    */
     void CheckForValidLenght()
     {
         if (selectedCards.Count < 3)

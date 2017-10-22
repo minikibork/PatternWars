@@ -20,15 +20,16 @@ GameObject:
   m_Component:
   - component: {fileID: 4217275985477878}
   - component: {fileID: 212797982933560824}
-  - component: {fileID: 114028147446786768}
   - component: {fileID: 61414463609290650}
+  - component: {fileID: 114719765644739668}
+  - component: {fileID: 114447496082337672}
   m_Layer: 0
   m_Name: SendButton
   m_TagString: SendButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4217275985477878
 Transform:
   m_ObjectHideFlags: 1
@@ -36,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1129113057951864}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -3.08, z: -1.8}
+  m_LocalPosition: {x: 0, y: -4.11, z: -1.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -67,7 +68,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.01, y: 1.18}
   m_EdgeRadius: 0
---- !u!114 &114028147446786768
+--- !u!114 &114447496082337672
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -75,11 +76,34 @@ MonoBehaviour:
   m_GameObject: {fileID: 1129113057951864}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03e3a8b57e5d1dd41905398cf4b440f9, type: 3}
+  m_Script: {fileID: 11500000, guid: a79507ed4e96edc41b24450dc040788a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TotalScore: 0
+  cardCombinations: []
+  listOfColors: 
+  listOfIndexes: 
+  isLegit: 0
+  DeckFill: {fileID: 0}
+  sendButtonG: {fileID: 0}
+  cardIndexSelected: {fileID: 0}
+  childTransform: {fileID: 0}
+  SendButtonPlease: {fileID: 0}
+--- !u!114 &114719765644739668
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1129113057951864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f354affe09738ed418515287acbd4555, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedCardsSent: 
   selectedCardsFromEventManager: 
   DeckFill: {fileID: 0}
+  hasBeenSend: 0
 --- !u!212 &212797982933560824
 SpriteRenderer:
   m_ObjectHideFlags: 1

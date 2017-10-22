@@ -13,6 +13,7 @@ public class SendButton : MonoBehaviour, IPointerDownHandler{
     SelectedCards listOfSelectedCards;
     public bool hasBeenSend = false;
     // Use this for initialization
+
     void Start () {
 		
 	}
@@ -32,7 +33,6 @@ public class SendButton : MonoBehaviour, IPointerDownHandler{
     {
         listOfSelectedCards = DeckFill.GetComponent<SelectedCards>();
         DeckFill = GameObject.FindGameObjectWithTag("Deck");
-        listOfSelectedCards = DeckFill.GetComponent<SelectedCards>();
         if(listOfSelectedCards.selectedCards.Count > 2)
         { 
         while (listOfSelectedCards.selectedCards.Count > 2 && listOfSelectedCards.selectedCards.Count < 5)
