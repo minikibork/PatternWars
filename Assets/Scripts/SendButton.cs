@@ -5,12 +5,12 @@ using UnityEngine.EventSystems;
 
 public class SendButton : MonoBehaviour, IPointerDownHandler{
 
-
+    public delegate void SentAction();
+    public static event SentAction Sent;
+    public List<int> selectedCardsSent = new List<int>();
     public List<int> selectedCardsFromEventManager = new List<int>();
     public GameObject DeckFill;
     SelectedCards listOfSelectedCards;
-    CardInformation cardIndexToAdd;
-    private EventManager EventManagery;
     public bool hasBeenSend = false;
     // Use this for initialization
     void Start () {
@@ -26,32 +26,12 @@ public class SendButton : MonoBehaviour, IPointerDownHandler{
 
         //CheckForValidLenght();
     }
-
-
-    void CheckForValidLenght()
-    {
-        DeckFill = GameObject.FindGameObjectWithTag("Deck");
-        listOfSelectedCards = DeckFill.GetComponent<SelectedCards>();
-      
-
-        if (listOfSelectedCards.selectedCards.Count < 3)
-        {
-            gameObject.SetActive(false);
-
-        }
-        else
-        {
-            gameObject.SetActive(true);
-        }
-    }
-
    
 
     public void FillWithZeros()
     {
         listOfSelectedCards = DeckFill.GetComponent<SelectedCards>();
         DeckFill = GameObject.FindGameObjectWithTag("Deck");
-        EventManagery = GetComponent<EventManager>();
         listOfSelectedCards = DeckFill.GetComponent<SelectedCards>();
         if(listOfSelectedCards.selectedCards.Count > 2)
         { 
@@ -60,12 +40,20 @@ public class SendButton : MonoBehaviour, IPointerDownHandler{
             listOfSelectedCards.selectedCards.Insert(0, 0);
         }
 
-            listOfSelectedCards.selectedCards.Sort();
-            Debug.Log(listOfSelectedCards.selectedCards[0]);
-            Debug.Log(listOfSelectedCards.selectedCards[1]);
-            Debug.Log(listOfSelectedCards.selectedCards[2]);
-            Debug.Log(listOfSelectedCards.selectedCards[3]);
-            Debug.Log(listOfSelectedCards.selectedCards[4]);
+            selectedCardsSent = listOfSelectedCards.selectedCards;
+            selectedCardsSent.Sort();
+            hasBeenSend = true;
+            Debug.Log(selectedCardsSent);
+            if (Sent != null)
+            {
+                Sent();
+            }
+            /*Debug.Log(listOfSelectedCards.selectedCards[0]);
+        Debug.Log(listOfSelectedCards.selectedCards[1]);
+        Debug.Log(listOfSelectedCards.selectedCards[2]);
+        Debug.Log(listOfSelectedCards.selectedCards[3]);
+        Debug.Log(listOfSelectedCards.selectedCards[4]);
+*/
         }
     }
 
