@@ -45,7 +45,13 @@ public class EventManager : MonoBehaviour, IPointerDownHandler
         GameObject g = Instantiate(deck.cards[n], selectedCardTransform, Quaternion.identity) as GameObject;
         Debug.Log(deck.cards[n]);
     }
-
+    void ColorInsert()
+    {
+        DeckFill = GameObject.FindGameObjectWithTag("Deck");
+        cardIndexToAdd = GetComponent<CardInformation>();
+        listOfSelectedCards = DeckFill.GetComponent<SelectedCards>();
+        
+    }
     void ListForSelectedCardsFill()
     {
         if(isSelected == false)
@@ -54,10 +60,11 @@ public class EventManager : MonoBehaviour, IPointerDownHandler
             cardIndexToAdd = GetComponent<CardInformation>();
             listOfSelectedCards = DeckFill.GetComponent<SelectedCards>();
             
+            
             if(listOfSelectedCards.selectedCards.Count < 5)
             {
-                listOfSelectedCards.selectedCards.Insert(0, cardIndexToAdd.cardIndex);
-                listOfSelectedCards.selectedCardsColors.Insert(0, cardIndexToAdd.color);
+                listOfSelectedCards.selectedCards.Insert(0, cardIndexToAdd.cardIndex);//fill the lists
+                listOfSelectedCards.selectedCardsColors.Insert(0, cardIndexToAdd.color);//fill the lists
             }
             if(listOfSelectedCards.selectedCards.Count == 5)
             {

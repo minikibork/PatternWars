@@ -14,16 +14,14 @@ public class SelectedCards : MonoBehaviour {
     public GameObject SendButtonPlease;
     public Transform childTransform;
     public Combinations Combinations;
-
+    CardInformation cardColorToAdd;
     // Use this for initialization
     void Start () {
         Deck = GameObject.FindGameObjectWithTag("Deck");
         Combinations = Deck.GetComponent<Combinations>();
-
-
-
     }
 
+  
     void Update()
     {
         
@@ -52,14 +50,11 @@ public class SelectedCards : MonoBehaviour {
         }
         else
         {
-            ColorCheck();
+            
             SendButtonPlease.SetActive(true);
         }
     }
 
-    void ColorCheck()
-    {
-
-    }
+   
    
 }

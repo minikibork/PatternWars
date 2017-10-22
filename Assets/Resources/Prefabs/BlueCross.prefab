@@ -68,7 +68,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardIndex: 6
-  color: 0
+  color: 3
 --- !u!114 &114683606337459654
 MonoBehaviour:
   m_ObjectHideFlags: 1
