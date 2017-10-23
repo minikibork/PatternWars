@@ -20,7 +20,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4682881620126344}
   - component: {fileID: 114373591670362696}
-  - component: {fileID: 114140471691243862}
   - component: {fileID: 114879155282106332}
   m_Layer: 0
   m_Name: DeckBuilding
@@ -42,24 +41,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114140471691243862
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1599726008358472}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11077b2d52f6b9442a6e5536ce9a834d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  selectedCards: 
-  selectedCardsColors: 
-  cardIndexCopy: 0
-  SendButtonPlease: {fileID: 0}
-  cardIndexSelected: {fileID: 0}
-  childTransform: {fileID: 0}
-  Combinations: {fileID: 0}
 --- !u!114 &114373591670362696
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -93,64 +74,72 @@ MonoBehaviour:
   TotalScore: 0
   cardCombinations:
   - combination: 010000000200000006000000
-    score: 0
+    score: 3
   - combination: 030000000400000005000000
-    score: 0
+    score: 3
   - combination: 0100000002000000030000000400000007000000
-    score: 0
+    score: 5
   - combination: 050000000600000007000000
-    score: 0
+    score: 4
   - combination: 01000000020000000500000007000000
-    score: 0
+    score: 4
   - combination: 03000000040000000600000007000000
-    score: 0
+    score: 4
   - combination: 010000000100000001000000
-    score: 0
+    score: 3
   - combination: 01000000010000000100000001000000
-    score: 0
+    score: 4
   - combination: 0100000001000000010000000100000001000000
-    score: 0
+    score: 5
   - combination: 020000000200000002000000
-    score: 0
+    score: 3
   - combination: 02000000020000000200000002000000
-    score: 0
+    score: 4
   - combination: 0200000002000000020000000200000002000000
-    score: 0
+    score: 5
   - combination: 030000000300000003000000
-    score: 0
+    score: 3
   - combination: 03000000030000000300000003000000
-    score: 0
+    score: 4
   - combination: 0300000003000000030000000300000003000000
-    score: 0
+    score: 5
   - combination: 040000000400000004000000
-    score: 0
+    score: 3
   - combination: 04000000040000000400000004000000
-    score: 0
+    score: 4
   - combination: 0400000004000000040000000400000004000000
-    score: 0
+    score: 5
   - combination: 050000000500000005000000
-    score: 0
+    score: 3
   - combination: 05000000050000000500000005000000
-    score: 0
+    score: 4
   - combination: 0500000005000000050000000500000005000000
-    score: 0
+    score: 5
   - combination: 060000000600000006000000
-    score: 0
+    score: 3
   - combination: 06000000060000000600000006000000
-    score: 0
+    score: 4
   - combination: 0600000006000000060000000600000006000000
-    score: 0
+    score: 5
   - combination: 070000000700000007000000
-    score: 0
+    score: 3
   - combination: 07000000070000000700000007000000
-    score: 0
+    score: 4
   - combination: 0700000007000000070000000700000007000000
-    score: 0
+    score: 5
   listOfColors: 
   listOfIndexes: 
   isLegit: 1
+  listOfVec3: []
+  listOfTargetsToDestroy: []
   DeckFill: {fileID: 1599726008358472}
   sendButtonG: {fileID: 0}
+  deckFill: {fileID: 1599726008358472}
   cardIndexSelected: {fileID: 0}
+  cardIndexesChildren: []
   childTransform: {fileID: 0}
   SendButtonPlease: {fileID: 0}
+  legitCombination: 0
+  readyToDestroy: 0
+  isLegitColors: 0
+  listOfAllIndexes: []

@@ -159,13 +159,7 @@ Prefab:
       propertyPath: SendButtonPlease
       value: 
       objectReference: {fileID: 367441892}
-    - target: {fileID: 114140471691243862, guid: d5f2952bcf2950c45b6fcaf7f89cc31a,
-        type: 2}
-      propertyPath: SendButtonPlease
-      value: 
-      objectReference: {fileID: 367441892}
-    m_RemovedComponents:
-    - {fileID: 114140471691243862, guid: d5f2952bcf2950c45b6fcaf7f89cc31a, type: 2}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d5f2952bcf2950c45b6fcaf7f89cc31a, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &367441892 stripped
