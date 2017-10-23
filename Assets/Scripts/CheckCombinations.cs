@@ -20,24 +20,24 @@ public class CheckCombinations : MonoBehaviour, IPointerDownHandler
     public List<cardLists> cardCombinations;
 
     public List<int> listOfColors = new List<int>();
-    
     public List<int> listOfIndexes = new List<int>();
     private int counter;
     public bool isLegit = false;
 
-    
+    public List<Vector3> listOfVec3 = new List<Vector3>();
+    public List<GameObject> listOfTargetsToDestroy = new List<GameObject>();
 
-    SelectedCards listOfSelectedCards;
 
     private SendButton2 sendButton;
     public GameObject DeckFill;
 
     public GameObject sendButtonG;
-
+    public GameObject deckFill;
     public CardInformation cardIndexSelected;
     public Transform childTransform;
     public GameObject SendButtonPlease;
     public bool legitCombination = false;
+    public int readyToDestroy = 0;
     void Start()
     {
         sendButton = sendButtonG.GetComponent<SendButton2>();
@@ -49,6 +49,8 @@ public class CheckCombinations : MonoBehaviour, IPointerDownHandler
         CheckForValidLenght();
         LegitCombination();
     }
+   
+   
     void CheckForValidLenght()
     {
         if (listOfIndexes.Count < 3)
@@ -100,7 +102,7 @@ public class CheckCombinations : MonoBehaviour, IPointerDownHandler
                         }
                         else
                         {
-                            Debug.Log("Not a valid combination");
+                            //Debug.Log("Not a valid combination");
                             break;
 
                         }
@@ -110,9 +112,10 @@ public class CheckCombinations : MonoBehaviour, IPointerDownHandler
                     {
                         TotalScore += cardCombinations[i].score;
                         Debug.Log("Valid Combination");
-                        Debug.Log(i);
-                        Debug.Log(TotalScore);
+                       // Debug.Log(i);
+                       // Debug.Log(TotalScore);
                         legitCombination = true;
+                        ReplaceAndDestroyCards();
                         break;
 
                     }
@@ -123,12 +126,29 @@ public class CheckCombinations : MonoBehaviour, IPointerDownHandler
                  
             }
             listOfIndexes.Clear();
-
+            Debug.Log("koga sum az");
         }
         sendButton.hasBeenSend = false;
-      //  Debug.Log(legitCombination);
-        
+      
     }
+
+    void ReplaceAndDestroyCards()
+    {
+        for(int i=0; i < listOfVec3.Count; i++)
+        {
+            deckFill = GameObject.FindGameObjectWithTag("Deck");
+            deck = deckFill.GetComponent<Dekk>();
+            int n = Random.Range(0, deck.cards.Count);
+            GameObject g = Instantiate(deck.cards[n], listOfVec3[i], Quaternion.identity) as GameObject;
+            deck.cards.Remove(deck.cards[n]);
+            
+            Destroy(listOfTargetsToDestroy[i]);
+          
+        }
+        listOfTargetsToDestroy.Clear();
+        listOfVec3.Clear();
+    }
+
     /*
     public int n;
 
