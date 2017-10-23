@@ -14,7 +14,7 @@ public class Dekk : MonoBehaviour
     public float Yspace;
     public float Xstart;
     public float Ystart;
-    
+    public int amountsOfCards;
    
     public void PlaceCards()
     {
@@ -29,11 +29,7 @@ public class Dekk : MonoBehaviour
                     g.name = x + "/" + y; //coordinates for debuging purposes
                     g.transform.parent = gameObject.transform;
                     cards.Remove(cards[i]);
-                    if (y == cols - 1 && x == rows - 1)
-                    {
-                        Debug.Log("Game is ready");
-                        Debug.Log(cards.Count);
-                    }
+                    amountsOfCards = cols * rows;
                 }
             }
     }

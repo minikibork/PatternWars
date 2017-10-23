@@ -29,26 +29,36 @@ public class CheckCombinations : MonoBehaviour, IPointerDownHandler
 
 
     private SendButton2 sendButton;
-    public GameObject DeckFill;
+  
 
     public GameObject sendButtonG;
     public GameObject deckFill;
-    public CardInformation cardIndexSelected;
+    public CardInformation[] cardIndexSelected;
+    public List<CardInformation> cardIndexesChildren;
     public Transform childTransform;
     public GameObject SendButtonPlease;
+    
     public bool legitCombination = false;
     public int readyToDestroy = 0;
     public bool isLegitColors = false;
+    public bool isThreeColors = false;
+    
     void Start()
     {
+        
         sendButton = sendButtonG.GetComponent<SendButton2>();
+        //Debug.Log(cardIndexSelected);
+        
+
     }
     void Update()
     {
-        cardIndexSelected = gameObject.GetComponentInChildren<CardInformation>();
+
+        cardIndexSelected = deckFill.GetComponentsInChildren<CardInformation>();
         childTransform = gameObject.GetComponentInChildren<Transform>();
         CheckForValidLenght();
         LegitCombination();
+        OptimalScore();
     }
    
    
@@ -74,6 +84,7 @@ public class CheckCombinations : MonoBehaviour, IPointerDownHandler
     {
         if (listOfColors.Contains(1) && listOfColors.Contains(2) && listOfColors.Contains(3))
         {
+            isThreeColors = true;
             isLegitColors = true;
             Debug.Log("THREE different colors");
         }
@@ -108,8 +119,6 @@ public class CheckCombinations : MonoBehaviour, IPointerDownHandler
         {
             LegitColors();
             if(isLegitColors == true)
-
-
             {
                 Debug.Log("We are on");
      
@@ -145,26 +154,23 @@ public class CheckCombinations : MonoBehaviour, IPointerDownHandler
                     {
                         TotalScore += cardCombinations[i].score;
                         Debug.Log("Valid Combination");
-                       // Debug.Log(i);
-                       // Debug.Log(TotalScore);
-                        legitCombination = true;
-                        ReplaceAndDestroyCards();
-
-                        break;
+                            // Debug.Log(i);
+                            // Debug.Log(TotalScore);
+                            MatchOptimalScore();
+                            legitCombination = true;
+                            ReplaceAndDestroyCards();
+                            break;
 
                     }
                     counter = 0;
-
-                    
                 }
                  
             }
                 listOfIndexes.Clear();
-                listOfColors.Clear();   
+                listOfColors.Clear();
+                isThreeColors = false;
                 isLegitColors = false;
-
-                Debug.Log("koga sum az");
-        }
+            }
         sendButton.hasBeenSend = false;
         }
     }
@@ -185,12 +191,183 @@ public class CheckCombinations : MonoBehaviour, IPointerDownHandler
         listOfTargetsToDestroy.Clear();
         listOfVec3.Clear();
     }
+    public List<int> list = new List<int>();
+    public List<int> listOfAllIndexes = new List<int>();
+    int c1=0, c2=0, c3=0, c4=0, c5=0, c6=0, c7=0;
 
+
+    public Component[] indexes;
     void OptimalScore()
     {
+        
+        deck = GetComponent<Dekk>();
+        
+        indexes = deckFill.GetComponentsInChildren<CardInformation>();
+        foreach (CardInformation card in indexes)
+        {    if(legitCombination == true)
+            {
+                listOfAllIndexes.Clear();
+            }
 
+            else if (deck.amountsOfCards != listOfAllIndexes.Count)
+            {
+                int n = card.cardIndex;
+                listOfAllIndexes.Add(n);
+                RepeatingIndexes(n);
+
+            }
+
+        }    
+    }
+    void RepeatingIndexes(int n)
+    {
+        if (n == 1)
+        {
+            c1++;
+        }
+        else if (n == 2)
+        {
+            c2++;
+        }
+        else if (n == 3)
+        {
+            c3++;
+        }
+        else if (n == 4)
+        {
+            c4++;
+        }
+        else if (n == 5)
+        {
+            c5++;
+        }
+        else if (n == 6)
+        {
+            c6++;
+        }
+        else if (n == 7)
+        {
+            c7++;
+        }
     }
 
+    void MatchOptimalScore()
+    {
+        if (listOfAllIndexes.Contains(1) && listOfAllIndexes.Contains(2) && listOfAllIndexes.Contains(3) && listOfAllIndexes.Contains(4) && listOfAllIndexes.Contains(7))
+        {
+            Debug.Log("5 star is the highest");
+        }
+
+        else if (listOfAllIndexes.Contains(1) && c1 == 5)
+        {
+            Debug.Log("11111");
+        }
+
+        else if (listOfAllIndexes.Contains(2) && c2 == 5)
+        {
+            Debug.Log("22222");
+        }
+
+        else if (listOfAllIndexes.Contains(3) && c3 == 5)
+        {
+            Debug.Log("33333");
+        }
+
+        else if (listOfAllIndexes.Contains(4) && c4 == 5)
+        {
+            Debug.Log("44444");
+        }
+
+        else if (listOfAllIndexes.Contains(5) && c5 == 5)
+        {
+            Debug.Log("55555");
+        }
+        else if (listOfAllIndexes.Contains(6) && c6 == 5)
+        {
+            Debug.Log("66666");
+        }
+        else if (listOfAllIndexes.Contains(7) && c7 == 5)
+        {
+            Debug.Log("77777");
+        }
+        else if (listOfAllIndexes.Contains(5) && listOfAllIndexes.Contains(6) && listOfAllIndexes.Contains(7))
+        {
+            Debug.Log("5 6 7");
+        }
+        else if (listOfAllIndexes.Contains(3) && listOfAllIndexes.Contains(4) && listOfAllIndexes.Contains(6) && listOfAllIndexes.Contains(7))
+        {
+            Debug.Log("3 4 6 7");
+        }
+        else if (listOfAllIndexes.Contains(1) && listOfAllIndexes.Contains(2) && listOfAllIndexes.Contains(5) && listOfAllIndexes.Contains(7))
+        {
+            Debug.Log("1 2 5 7");
+        }
+        else if (listOfAllIndexes.Contains(1) && listOfAllIndexes.Contains(2) && listOfAllIndexes.Contains(6))
+        {
+            Debug.Log("1 2 6");
+        }
+        else if (listOfAllIndexes.Contains(3) && listOfAllIndexes.Contains(4) && listOfAllIndexes.Contains(5))
+        {
+            Debug.Log("3 4 5");
+        }
+        else if (listOfAllIndexes.Contains(1) && c1 == 4)
+        {
+            Debug.Log("1111");
+        }
+        if (listOfAllIndexes.Contains(2) && c2 == 4)
+        {
+            Debug.Log("2222");
+        }
+        if (listOfAllIndexes.Contains(3) && c3 == 4)
+        {
+            Debug.Log("3333");
+        }
+        if (listOfAllIndexes.Contains(4) && c4 == 4)
+        {
+            Debug.Log("4444");
+        }
+        if (listOfAllIndexes.Contains(5) && c5 == 4)
+        {
+            Debug.Log("5555");
+        }
+        if (listOfAllIndexes.Contains(6) && c6 == 4)
+        {
+            Debug.Log("6666");
+        }
+        if (listOfAllIndexes.Contains(7) && c7 == 4)
+        {
+            Debug.Log("7777");
+        }
+        if (listOfAllIndexes.Contains(1) && c1 == 3)
+        {
+            Debug.Log("111");
+        }
+        if (listOfAllIndexes.Contains(2) && c2 == 3)
+        {
+            Debug.Log("222");
+        }
+        if (listOfAllIndexes.Contains(3) && c3 == 3)
+        {
+            Debug.Log("333");
+        }
+        if (listOfAllIndexes.Contains(4) && c4 == 3)
+        {
+            Debug.Log("444");
+        }
+        if (listOfAllIndexes.Contains(5) && c5 == 3)
+        {
+            Debug.Log("555");
+        }
+        if (listOfAllIndexes.Contains(6) && c6 == 3)
+        {
+            Debug.Log("666");
+        }
+        if (listOfAllIndexes.Contains(7) && c7 == 3)
+        {
+            Debug.Log("777");
+        }
+        
+    }
 
 }
 /*
@@ -351,3 +528,207 @@ void ReplaceAndDestroyCards() //TO BE FINISHED AFTER COMBINATIONS
     legitCombination = false;
 }
 */
+/*
+if(listOfAllIndexes.Contains(1) && c1==3)
+        {
+            Debug.Log("111");
+            
+        }
+        if (listOfAllIndexes.Contains(1) && c1 == 4)
+        {
+            Debug.Log("1111");
+        }
+        if (listOfAllIndexes.Contains(1) && c1 == 5)
+        {
+            Debug.Log("11111");
+        }
+        if (listOfAllIndexes.Contains(2) && c2 == 3)
+        {
+            Debug.Log("222");
+        }
+        if (listOfAllIndexes.Contains(2) && c2 == 4)
+        {
+            Debug.Log("2222");
+        }
+        if (listOfAllIndexes.Contains(2) && c2 == 5)
+        {
+            Debug.Log("22222");
+
+        }
+        if (listOfAllIndexes.Contains(3) && c3 == 3)
+        {
+            Debug.Log("333");
+        }
+        if (listOfAllIndexes.Contains(3) && c3 == 4)
+        {
+            Debug.Log("3333");
+        }
+        if (listOfAllIndexes.Contains(3) && c3 == 5)
+        {
+            Debug.Log("33333");
+        }
+        if (listOfAllIndexes.Contains(4) && c4 == 3)
+        {
+            Debug.Log("444");
+        }
+        if (listOfAllIndexes.Contains(4) && c4 == 4)
+        {
+            Debug.Log("4444");
+        }
+        if (listOfAllIndexes.Contains(4) && c4 == 5)
+        {
+            Debug.Log("44444");
+        }
+        if (listOfAllIndexes.Contains(5) && c5 == 3)
+        {
+            Debug.Log("555");
+        }
+        if (listOfAllIndexes.Contains(5) && c5 == 4)
+        {
+            Debug.Log("5555");
+        }
+        if (listOfAllIndexes.Contains(5) && c5 == 5)
+        {
+            Debug.Log("55555");
+        }
+        if (listOfAllIndexes.Contains(6) && c6 == 3)
+        {
+            Debug.Log("666");
+        }
+        if (listOfAllIndexes.Contains(6) && c6 == 4)
+        {
+            Debug.Log("6666");
+        }
+        if (listOfAllIndexes.Contains(6) && c6 == 5)
+        {
+            Debug.Log("66666");
+        }
+        if (listOfAllIndexes.Contains(7) && c7 == 3)
+        {
+            Debug.Log("777");
+        }
+        if (listOfAllIndexes.Contains(7) && c7 == 4)
+        {
+            Debug.Log("7777");
+        }
+        if (listOfAllIndexes.Contains(7) && c7 == 5)
+        {
+            Debug.Log("77777");
+        }
+*/
+/*
+    if (listOfAllIndexes.Contains(1) && listOfAllIndexes.Contains(2) && listOfAllIndexes.Contains(3) && listOfAllIndexes.Contains(4) && listOfAllIndexes.Contains(7))
+        {
+            Debug.Log("5 star is the highest");
+
+        }
+
+        else if (listOfAllIndexes.Contains(1) && c1 == 5)
+        {
+            Debug.Log("11111");
+        }
+
+        else if (listOfAllIndexes.Contains(2) && c2 == 5)
+        {
+            Debug.Log("22222");
+        }
+
+        else if (listOfAllIndexes.Contains(3) && c3 == 5)
+        {
+            Debug.Log("33333");
+        }
+
+        else if (listOfAllIndexes.Contains(4) && c4 == 5)
+        {
+            Debug.Log("44444");
+        }
+
+        else if (listOfAllIndexes.Contains(5) && c5 == 5)
+        {
+            Debug.Log("55555");
+        }
+        else if (listOfAllIndexes.Contains(6) && c6 == 5)
+        {
+            Debug.Log("66666");
+        }
+        else if (listOfAllIndexes.Contains(7) && c7 == 5)
+        {
+            Debug.Log("77777");
+        }
+        else if (listOfAllIndexes.Contains(5) && listOfAllIndexes.Contains(6) && listOfAllIndexes.Contains(7))
+        {
+            Debug.Log("5 6 7");
+        }
+        else if (listOfAllIndexes.Contains(3) && listOfAllIndexes.Contains(4) && listOfAllIndexes.Contains(6) && listOfAllIndexes.Contains(7))
+        {
+            Debug.Log("3 4 6 7");
+        }
+        else if (listOfAllIndexes.Contains(1) && listOfAllIndexes.Contains(2) && listOfAllIndexes.Contains(5) && listOfAllIndexes.Contains(7))
+        {
+            Debug.Log("1 2 5 7");
+        }
+        else if (listOfAllIndexes.Contains(1) && listOfAllIndexes.Contains(2) && listOfAllIndexes.Contains(6))
+        {
+            Debug.Log("1 2 6");
+        }
+        else if (listOfAllIndexes.Contains(3) && listOfAllIndexes.Contains(4) && listOfAllIndexes.Contains(5))
+        {
+            Debug.Log("3 4 5");
+        }
+        else if (listOfAllIndexes.Contains(1) && c1 == 4)
+        {
+            Debug.Log("1111");
+        }
+        if (listOfAllIndexes.Contains(2) && c2 == 4)
+        {
+            Debug.Log("2222");
+        }
+        if (listOfAllIndexes.Contains(3) && c3 == 4)
+        {
+            Debug.Log("3333");
+        }
+        if (listOfAllIndexes.Contains(4) && c4 == 4)
+        {
+            Debug.Log("4444");
+        }
+        if (listOfAllIndexes.Contains(5) && c5 == 4)
+        {
+            Debug.Log("5555");
+        }
+        if (listOfAllIndexes.Contains(6) && c6 == 4)
+        {
+            Debug.Log("6666");
+        }
+        if (listOfAllIndexes.Contains(7) && c7 == 4)
+        {
+            Debug.Log("7777");
+        }
+        if (listOfAllIndexes.Contains(1) && c1 == 3)
+        {
+            Debug.Log("111");
+        }
+        if (listOfAllIndexes.Contains(2) && c2 == 3)
+        {
+            Debug.Log("222");
+        }
+        if (listOfAllIndexes.Contains(3) && c3 == 3)
+        {
+            Debug.Log("333");
+        }
+        if (listOfAllIndexes.Contains(4) && c4 == 3)
+        {
+            Debug.Log("444");
+        }
+        if (listOfAllIndexes.Contains(5) && c5 == 3)
+        {
+            Debug.Log("555");
+        }
+        if (listOfAllIndexes.Contains(6) && c6 == 3)
+        {
+            Debug.Log("666");
+        }
+        if (listOfAllIndexes.Contains(7) && c7 == 3)
+        {
+            Debug.Log("777");
+        }
+        */

@@ -16,10 +16,8 @@ public class EventManager : MonoBehaviour, IPointerDownHandler
     public Vector3[] selectedCardTransforms;
     public GameObject lastPressed;
     public Dekk deck;
-    GameObject decky;
     public GameObject self;
     public int n;
-    int i = 0;
     public static int cardsDestroy = 0;
     void Start()
     {
