@@ -38,6 +38,7 @@ public class CheckCombinations : MonoBehaviour, IPointerDownHandler
     public GameObject SendButtonPlease;
     public bool legitCombination = false;
     public int readyToDestroy = 0;
+    public bool isLegitColors = false;
     void Start()
     {
         sendButton = sendButtonG.GetComponent<SendButton2>();
@@ -68,18 +69,50 @@ public class CheckCombinations : MonoBehaviour, IPointerDownHandler
     {
         
     }
-    
+
+    void LegitColors()
+    {
+        if (listOfColors.Contains(1) && listOfColors.Contains(2) && listOfColors.Contains(3))
+        {
+            isLegitColors = true;
+            Debug.Log("THREE different colors");
+        }
+
+        else if (listOfColors.Contains(1) && listOfColors.Contains(2) == false && listOfColors.Contains(3) == false)
+        {
+            
+            isLegitColors = true;
+            Debug.Log("Same colors");
+        }
+        else if (listOfColors.Contains(2) && listOfColors.Contains(1) == false && listOfColors.Contains(3) == false)
+        {
+            isLegitColors = true;
+            Debug.Log("Same colors");
+        }
+        else if (listOfColors.Contains(3) && listOfColors.Contains(1) == false && listOfColors.Contains(2) == false)
+        {
+            isLegitColors = true;
+            Debug.Log("Same colors");
+        }
+
+        else
+        {
+            isLegitColors = false;
+            Debug.Log("Not Legit colors");
+        }
+    }
 
     void LegitCombination()
     {
         if (sendButton.hasBeenSend == true)
         {
-            Debug.Log("We are on");
-        DeckFill = GameObject.FindGameObjectWithTag("Deck");
-        //sendButton = sendButtonG.GetComponent<SendButton>();
-        // myList = sendButton.selectedCardsSent;
-        //Debug.Log(sendButton.selectedCardsSent);
-       
+            LegitColors();
+            if(isLegitColors == true)
+
+
+            {
+                Debug.Log("We are on");
+     
         listOfIndexes.Sort();
         
         for (int i = 0; cardCombinations.Count - 1 > i; i++)
@@ -102,7 +135,7 @@ public class CheckCombinations : MonoBehaviour, IPointerDownHandler
                         }
                         else
                         {
-                            //Debug.Log("Not a valid combination");
+                            Debug.Log("Not a valid combination");
                             break;
 
                         }
@@ -116,6 +149,7 @@ public class CheckCombinations : MonoBehaviour, IPointerDownHandler
                        // Debug.Log(TotalScore);
                         legitCombination = true;
                         ReplaceAndDestroyCards();
+
                         break;
 
                     }
@@ -125,11 +159,14 @@ public class CheckCombinations : MonoBehaviour, IPointerDownHandler
                 }
                  
             }
-            listOfIndexes.Clear();
-            Debug.Log("koga sum az");
+                listOfIndexes.Clear();
+                listOfColors.Clear();   
+                isLegitColors = false;
+
+                Debug.Log("koga sum az");
         }
         sendButton.hasBeenSend = false;
-      
+        }
     }
 
     void ReplaceAndDestroyCards()
@@ -149,27 +186,6 @@ public class CheckCombinations : MonoBehaviour, IPointerDownHandler
         listOfVec3.Clear();
     }
 
-    /*
-    public int n;
-
-    public Vector3[] selectedCardTransforms;
-    public EventManager eventy;
-    void ReplaceAndDestroyCards() //TO BE FINISHED AFTER COMBINATIONS
-    {
-        if (legitCombination == true)
-        {
-            selectedCardTransforms =  
-               eventy = GetComponent<EventManager>();
-            childTransform = transform.position;
-
-            //Debug.Log(selectedCardTransform);
-            n++;
-            GameObject g = Instantiate(deck.cards[n], childTransform, Quaternion.identity) as GameObject;
-            Debug.Log(deck.cards[n]);
-        }
-        legitCombination = false;
-    }
-    */
     void OptimalScore()
     {
 
@@ -313,3 +329,25 @@ void LegitCombination()
            Debug.Log("they are not the same");
        }
    */
+
+/*
+public int n;
+
+public Vector3[] selectedCardTransforms;
+public EventManager eventy;
+void ReplaceAndDestroyCards() //TO BE FINISHED AFTER COMBINATIONS
+{
+    if (legitCombination == true)
+    {
+        selectedCardTransforms =  
+           eventy = GetComponent<EventManager>();
+        childTransform = transform.position;
+
+        //Debug.Log(selectedCardTransform);
+        n++;
+        GameObject g = Instantiate(deck.cards[n], childTransform, Quaternion.identity) as GameObject;
+        Debug.Log(deck.cards[n]);
+    }
+    legitCombination = false;
+}
+*/

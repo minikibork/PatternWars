@@ -32,7 +32,6 @@ public class EventManager : MonoBehaviour, IPointerDownHandler
     void Update()
     {
         
-       // ReplaceAndDestroyCards();
 
     }
     public virtual void OnPointerDown(PointerEventData eventData)

@@ -80,9 +80,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cards: []
-  SendButton: {fileID: 1129113057951864, guid: 96cedba2b0c170040ba9dfcea2c814c7, type: 2}
   deckFill: {fileID: 0}
-  listOfSelectedCards: {fileID: 0}
   listOfCards: {fileID: 0}
   cardIndexToAdd: {fileID: 0}
   isSelected: 0
@@ -105,7 +103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardIndex: 6
-  color: 2
+  color: 1
 --- !u!212 &212233788013844810
 SpriteRenderer:
   m_ObjectHideFlags: 1

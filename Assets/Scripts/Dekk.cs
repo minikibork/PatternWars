@@ -5,9 +5,7 @@ using UnityEngine;
 public class Dekk : MonoBehaviour
 {
 
-    public List<GameObject> cards = new List<GameObject>();
-    public static int numSpawned = 0;
-    int numToSpawn = 21;
+    public List<GameObject> cards = new List<GameObject>(); 
     public int i;
 
     public int cols;
@@ -17,16 +15,7 @@ public class Dekk : MonoBehaviour
     public float Xstart;
     public float Ystart;
     
-    public void PutInPlace()
-    {
-
-        int i = Random.Range(0, cards.Count - 1);
-        GameObject myObj = Instantiate(cards[i]) as GameObject;
-        cards.Remove(cards[i]);
-        numSpawned++;
-        myObj.transform.position = transform.position;//newtransform;
-
-    }
+   
     public void PlaceCards()
     {
         
@@ -39,7 +28,7 @@ public class Dekk : MonoBehaviour
                     GameObject g = Instantiate(cards[i], spawnPos, Quaternion.identity) as GameObject;
                     g.name = x + "/" + y; //coordinates for debuging purposes
                     g.transform.parent = gameObject.transform;
-                    cards.Remove(cards[i]);//NEW
+                    cards.Remove(cards[i]);
                     if (y == cols - 1 && x == rows - 1)
                     {
                         Debug.Log("Game is ready");
@@ -47,7 +36,6 @@ public class Dekk : MonoBehaviour
                     }
                 }
             }
-        
     }
 
 
@@ -72,15 +60,12 @@ public class Dekk : MonoBehaviour
         }
 
     }
-
     
-
-    // Use this for initialization
     void Awake()
     {
         Shuffle();
 
-        //PutInPlace();
+        
     }
     void Start()
     {
