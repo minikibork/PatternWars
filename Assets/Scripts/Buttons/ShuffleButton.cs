@@ -13,4 +13,8 @@ public class ShuffleButton : MonoBehaviour {
 	void Update () {
 		
 	}
+    void shuffleAllCards()
+    {
+
+    }
 }

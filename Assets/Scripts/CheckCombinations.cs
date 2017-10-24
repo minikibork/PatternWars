@@ -49,8 +49,7 @@ public class CheckCombinations : MonoBehaviour, IPointerDownHandler
     public int readyToDestroy = 0;
     public bool isLegitColors = false;
     public bool isThreeColors = false;
-
-
+    
     public List<int> list = new List<int>();
     public List<int> listOfAllIndexes = new List<int>();
     int c1 = 0, c2 = 0, c3 = 0, c4 = 0, c5 = 0, c6 = 0, c7 = 0;
@@ -68,14 +67,16 @@ public class CheckCombinations : MonoBehaviour, IPointerDownHandler
     public EventManager[] eventy;
     void Update()
     {
-       
+        deck = GetComponent<Dekk>();
         cardIndexSelected = deckFill.GetComponentsInChildren<CardInformation>();
         childTransform = gameObject.GetComponentInChildren<Transform>();
+
         CheckForValidLenght();
         LegitCombination();
         OptimalScore();
     }
-   
+    
+    
    
     void CheckForValidLenght()
     {
@@ -132,17 +133,30 @@ public class CheckCombinations : MonoBehaviour, IPointerDownHandler
             Highlight();
         }
     }
+    
+    [SerializeField]
+    public Component[] dekk;
 
-    /// <summary>
-    /// /////////////////////////////////////////////////////////////////////////////////
-    /// </summary>
-    /// 
-
-    void LegitOptinalCombinations()
+    public GameObject[] dekkk;
+    public void ShuffleButton()
     {
-
-
-
+        dekk = deckFill.GetComponentsInChildren<Dekk>();
+        
+        for(int i=0; i<dekk.Length; i++)
+        {
+            deck.cards.Insert(0, dekk[i].gameObject);
+            int n = dekk.Length;//n is the random number
+            while (n > 1)
+            {
+                n--;
+                int k = Random.Range(0, n + 1); //k is the id we want to change
+                GameObject temp = deck.cards[n];
+                deck.cards[k] = deck.cards[n];
+                deck.cards[n] = temp;
+                Debug.Log("we are totally here man");
+            }
+        }
+        deck.PlaceCards();
     }
 
     void LegitCombination()
@@ -152,7 +166,7 @@ public class CheckCombinations : MonoBehaviour, IPointerDownHandler
             LegitColors();
             if(isLegitColors == true)
             {
-                Debug.Log("We are on");
+               // Debug.Log("We are on");
      
                 listOfIndexes.Sort();
         
@@ -240,26 +254,22 @@ public class CheckCombinations : MonoBehaviour, IPointerDownHandler
     {
         for(int i=0; i < listOfVec3.Count; i++)
         {
-            Debug.Log("I AM WORKING");
+           
             if (deck.cards.Count != 0)
             {
-               Debug.Log("I am inside");
                 deckFill = GameObject.FindGameObjectWithTag("Deck");
                 deck = deckFill.GetComponent<Dekk>();
                 int n = Random.Range(0, deck.cards.Count);
                 GameObject g = Instantiate(deck.cards[n], listOfVec3[i], Quaternion.identity) as GameObject;
                 g.transform.parent = gameObject.transform;
                 deck.cards.Remove(deck.cards[n]);
-
-                Debug.Log("I am inside");
+                
             }
-            Debug.Log("I AM WORKING TOO");
             Destroy(listOfTargetsToDestroy[i]);
         }
         listOfTargetsToDestroy.Clear();
         listOfVec3.Clear();
         legitCombination = false;
-        Debug.Log("legit is going false");
     }
    
     void OptimalScore()
