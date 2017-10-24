@@ -10,6 +10,13 @@ public struct cardLists
     public int score;
 }
 
+[System.Serializable]
+public struct OptimalCardList
+{
+    public int indexOcl;
+    public int colorOcl;
+}
+
 public class CheckCombinations : MonoBehaviour, IPointerDownHandler
 {
     Dekk deck;
@@ -110,9 +117,23 @@ public class CheckCombinations : MonoBehaviour, IPointerDownHandler
         {
             isLegitColors = false;
             Debug.Log("Not Legit colors");
+            listOfIndexes.Clear();
+            listOfColors.Clear();
+            isThreeColors = false;
         }
     }
 
+    /// <summary>
+    /// /////////////////////////////////////////////////////////////////////////////////
+    /// </summary>
+    /// 
+
+    void LegitOptinalCombinations()
+    {
+
+
+
+    }
     void LegitCombination()
     {
         if (sendButton.hasBeenSend == true)
@@ -194,7 +215,7 @@ public class CheckCombinations : MonoBehaviour, IPointerDownHandler
     public List<int> list = new List<int>();
     public List<int> listOfAllIndexes = new List<int>();
     int c1=0, c2=0, c3=0, c4=0, c5=0, c6=0, c7=0;
-
+    bool currentCombinations = false;
 
     public Component[] indexes;
     void OptimalScore()
@@ -256,117 +277,177 @@ public class CheckCombinations : MonoBehaviour, IPointerDownHandler
         if (listOfAllIndexes.Contains(1) && listOfAllIndexes.Contains(2) && listOfAllIndexes.Contains(3) && listOfAllIndexes.Contains(4) && listOfAllIndexes.Contains(7))
         {
             Debug.Log("5 star is the highest");
+            currentCombinations = true;
+            return;
         }
 
         else if (listOfAllIndexes.Contains(1) && c1 == 5)
         {
             Debug.Log("11111");
+            currentCombinations = true;
+            return;
         }
 
         else if (listOfAllIndexes.Contains(2) && c2 == 5)
         {
             Debug.Log("22222");
+            currentCombinations = true;
+            return;
         }
 
         else if (listOfAllIndexes.Contains(3) && c3 == 5)
         {
             Debug.Log("33333");
+
+            currentCombinations = true;
+            return;
         }
 
         else if (listOfAllIndexes.Contains(4) && c4 == 5)
         {
             Debug.Log("44444");
+
+            currentCombinations = true;
+            return;
         }
 
         else if (listOfAllIndexes.Contains(5) && c5 == 5)
         {
             Debug.Log("55555");
+            currentCombinations = true;
+            return;
         }
         else if (listOfAllIndexes.Contains(6) && c6 == 5)
         {
             Debug.Log("66666");
+            currentCombinations = true;
+            return;
         }
         else if (listOfAllIndexes.Contains(7) && c7 == 5)
         {
             Debug.Log("77777");
+            currentCombinations = true;
+            return;
         }
         else if (listOfAllIndexes.Contains(5) && listOfAllIndexes.Contains(6) && listOfAllIndexes.Contains(7))
         {
             Debug.Log("5 6 7");
+            currentCombinations = true;
+            return;
         }
         else if (listOfAllIndexes.Contains(3) && listOfAllIndexes.Contains(4) && listOfAllIndexes.Contains(6) && listOfAllIndexes.Contains(7))
         {
             Debug.Log("3 4 6 7");
+            currentCombinations = true;
+            return;
         }
         else if (listOfAllIndexes.Contains(1) && listOfAllIndexes.Contains(2) && listOfAllIndexes.Contains(5) && listOfAllIndexes.Contains(7))
         {
             Debug.Log("1 2 5 7");
+            currentCombinations = true;
+            return;
         }
         else if (listOfAllIndexes.Contains(1) && listOfAllIndexes.Contains(2) && listOfAllIndexes.Contains(6))
         {
             Debug.Log("1 2 6");
+            currentCombinations = true;
+            return;
         }
         else if (listOfAllIndexes.Contains(3) && listOfAllIndexes.Contains(4) && listOfAllIndexes.Contains(5))
         {
             Debug.Log("3 4 5");
+            currentCombinations = true;
+            return;
         }
         else if (listOfAllIndexes.Contains(1) && c1 == 4)
         {
             Debug.Log("1111");
+            currentCombinations = true;
+            return;
         }
         if (listOfAllIndexes.Contains(2) && c2 == 4)
         {
             Debug.Log("2222");
+            currentCombinations = true;
+            return;
         }
         if (listOfAllIndexes.Contains(3) && c3 == 4)
         {
             Debug.Log("3333");
+            currentCombinations = true;
+            return;
         }
         if (listOfAllIndexes.Contains(4) && c4 == 4)
         {
             Debug.Log("4444");
+            currentCombinations = true;
+            return;
         }
         if (listOfAllIndexes.Contains(5) && c5 == 4)
         {
             Debug.Log("5555");
+            currentCombinations = true;
+            return;
         }
         if (listOfAllIndexes.Contains(6) && c6 == 4)
         {
             Debug.Log("6666");
+            currentCombinations = true;
+            return;
         }
         if (listOfAllIndexes.Contains(7) && c7 == 4)
         {
             Debug.Log("7777");
+            currentCombinations = true;
+            return;
         }
         if (listOfAllIndexes.Contains(1) && c1 == 3)
         {
             Debug.Log("111");
+            currentCombinations = true;
+            return;
         }
         if (listOfAllIndexes.Contains(2) && c2 == 3)
         {
             Debug.Log("222");
+            currentCombinations = true;
+            return;
         }
         if (listOfAllIndexes.Contains(3) && c3 == 3)
         {
             Debug.Log("333");
+            currentCombinations = true;
+            return;
         }
         if (listOfAllIndexes.Contains(4) && c4 == 3)
         {
             Debug.Log("444");
+            currentCombinations = true;
+            return;
         }
         if (listOfAllIndexes.Contains(5) && c5 == 3)
         {
             Debug.Log("555");
+            currentCombinations = true;
+            return;
         }
         if (listOfAllIndexes.Contains(6) && c6 == 3)
         {
             Debug.Log("666");
+            currentCombinations = true;
+            return;
         }
         if (listOfAllIndexes.Contains(7) && c7 == 3)
         {
             Debug.Log("777");
+            currentCombinations = true;
+            return;
         }
-        
+        else
+        {
+            Debug.Log("No more combinations");
+            currentCombinations = false;
+        }
     }
 
 }
