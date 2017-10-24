@@ -12,8 +12,7 @@ public class TotalScore : MonoBehaviour {
     private int totalScoreToDisplay = 0;
     [SerializeField]
     private GameObject deckFill;
-
-    // Use this for initialization
+    
     void Start () {
         checkedCombinations = deckFill.GetComponent<CheckCombinations>();
         txt = gameObject.GetComponent<Text>();

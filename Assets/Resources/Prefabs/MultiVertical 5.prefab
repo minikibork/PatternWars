@@ -81,16 +81,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cards: []
   deckFill: {fileID: 0}
-  listOfCards: {fileID: 0}
+  checkCombination: {fileID: 0}
   cardIndexToAdd: {fileID: 0}
   isSelected: 0
   isLegitCombination: 0
-  selectedCardTransform: {x: 0, y: 0, z: 0}
-  selectedCardTransforms: []
   lastPressed: {fileID: 0}
   deck: {fileID: 0}
   self: {fileID: 1700020930991588}
   n: 0
+  party: {fileID: 1858090315444032, guid: 67dcdb0aa42a102429693d4300b5a405, type: 2}
+  party2: {fileID: 1765660546200620, guid: 772bf7d07e0e59841930176bcb6aa610, type: 2}
+  sendButon: {fileID: 1129113057951864, guid: 96cedba2b0c170040ba9dfcea2c814c7, type: 2}
+  sendButton: {fileID: 0}
+  scale: {x: 0, y: 0, z: 0}
 --- !u!114 &114385835921984942
 MonoBehaviour:
   m_ObjectHideFlags: 1
