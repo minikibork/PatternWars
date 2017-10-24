@@ -15,7 +15,24 @@ public class Dekk : MonoBehaviour
     public float Xstart;
     public float Ystart;
     public int amountsOfCards;
-   
+    public Component[] cardIndexes;
+
+    public List<int> listOfAllIndexesOnBoard = new List<int>();
+
+    public void ShuffleButton()
+    {
+        cardIndexes = GetComponentsInChildren<CardInformation>();
+        foreach (CardInformation card in cardIndexes)
+        {
+          if (amountsOfCards != listOfAllIndexesOnBoard.Count)
+            {
+                int n = card.cardIndex;
+                listOfAllIndexesOnBoard.Add(n);
+            }
+        }
+
+    }
+
     public void PlaceCards()
     {
         
@@ -26,7 +43,7 @@ public class Dekk : MonoBehaviour
                     i = Random.Range(0, cards.Count);
                     Vector3 spawnPos = new Vector3(Xstart + x * (1 + Xspace) + x, Ystart + y * (1 + Yspace) + y, 0);
                     GameObject g = Instantiate(cards[i], spawnPos, Quaternion.identity) as GameObject;
-                    g.name = x + "/" + y; //coordinates for debuging purposes
+                    //g.name = x + "/" + y; //coordinates for debuging purposes
                     g.transform.parent = gameObject.transform;
                     cards.Remove(cards[i]);
                     amountsOfCards = cols * rows;
@@ -37,8 +54,15 @@ public class Dekk : MonoBehaviour
 
     public void Shuffle()
     {
-
+        
         Object[] subListObjects = Resources.LoadAll("Prefabs", typeof(GameObject));
+
+        if (subListObjects == null)
+        {
+            Debug.Log("there are no prefabs to take");
+            return;
+        }
+
         foreach (GameObject subListObject in subListObjects)
         {
             GameObject lo = (GameObject)subListObject;
