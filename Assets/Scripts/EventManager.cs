@@ -8,74 +8,182 @@ public class EventManager : MonoBehaviour, IPointerDownHandler
     public List<GameObject> cards = new List<GameObject>();
     
     public GameObject deckFill;
-    public CheckCombinations listOfCards;
+    public CheckCombinations checkCombination;
     public CardInformation cardIndexToAdd;
     public bool isSelected;
     public bool isLegitCombination;
-    public Vector3 selectedCardTransform;
-    public Vector3[] selectedCardTransforms;
     public GameObject lastPressed;
     public Dekk deck;
     public GameObject self;
     public int n;
     public static int cardsDestroy = 0;
+    [SerializeField]
+    public GameObject party;
+    [SerializeField]
+    public GameObject party2;
+
+    [SerializeField]
+    public GameObject sendButon;
+    [SerializeField]
+    public SendButton2 sendButton;
+    public Vector3 scale;
     void Start()
     {
         deckFill = GameObject.FindGameObjectWithTag("Deck");
-        listOfCards = deckFill.GetComponent<CheckCombinations>();
-        
+        scale = transform.localScale;
         isSelected = false;
-        
+        sendButton = sendButon.GetComponent<SendButton2>();
+        cardIndexToAdd = GetComponent<CardInformation>();
+        checkCombination = deckFill.GetComponent<CheckCombinations>();
+
+    }
+    void isLegit()
+    {
+        if (isSelected == false)
+        {
+            scale.x = 1F;
+            scale.y = 1F;
+            transform.localScale = scale;
+        }
     }
     void Update()
     {
-        
-
+       isLegit();
     }
     public virtual void OnPointerDown(PointerEventData eventData)
     {
-        if(isSelected==false)
+        if(isSelected == true)
         {
-            isSelected = true;
-            Debug.Log("isSelected - TRUE");
+            isSelected = false;
         }
         else
         {
-            isSelected = false;
-
-            Debug.Log("isSelected - FALSE");
+            isSelected = true;
+            Vector3 scale = transform.localScale;
+            scale.x = 2F;
+            scale.y = 2F;
+            transform.localScale = scale;
         }
-        ListForSelectedCardsFill();
-        
-    }
-    
-    
-    void ListForSelectedCardsFill()
-    {
-        if(isSelected == true)
+        FillingLists();
+        Particles();
+
+        /*
+        if (checkCombination.listOfIndexes.Count < 5)
         { 
-            deckFill = GameObject.FindGameObjectWithTag("Deck");
-            cardIndexToAdd = GetComponent<CardInformation>();
-            listOfCards = deckFill.GetComponent<CheckCombinations>();
+            if (isSelected == false)
+        {
+            isSelected = true;
+            Debug.Log("isSelected - TRUE");
+               
+                Vector3 scale = transform.localScale;
+                scale.x = 2F;
+                scale.y = 2F;
+                transform.localScale = scale;
+            }
+        else
+        {
             
-            if (listOfCards.listOfIndexes.Count < 5)
+                isSelected = false;
+                Vector3 scale = transform.localScale;
+                scale.x = 1F;
+                scale.y = 1F;
+                transform.localScale = scale;
+            }
+        }
+        */
+        // isLegit();
+        /*
+        switch (isSelected && (checkCombination.listOfIndexes.Count < 5))
+        {
+            case true:
+                isSelected = false;
+                Vector3 scale = transform.localScale;
+                scale.x = 1F;
+                scale.y = 1F;
+                transform.localScale = scale;
+
+                break;
+            case false:
+                
+
+                isSelected = true;
+                Vector3 scale2 = transform.localScale;
+                scale2.x = 2F;
+                scale2.y = 2F;
+                transform.localScale = scale2;
+
+                break;
+        }
+        if(isSelected == true)
+        {
+
+        }
+        */
+
+
+    }
+    void FillingLists()
+    {
+
+        deckFill = GameObject.FindGameObjectWithTag("Deck");
+        cardIndexToAdd = GetComponent<CardInformation>();
+        checkCombination = deckFill.GetComponent<CheckCombinations>();
+        
+        if (isSelected == true)
+        {
+            if (checkCombination.listOfIndexes.Count < 5)
             {
-                listOfCards.listOfIndexes.Insert(0, cardIndexToAdd.cardIndex);//fill the lists
-                listOfCards.listOfColors.Insert(0, cardIndexToAdd.color);//fill the lists
-                listOfCards.listOfVec3.Insert(0, transform.position);
-                listOfCards.listOfTargetsToDestroy.Insert(0, gameObject);
+                checkCombination.listOfIndexes.Insert(0, cardIndexToAdd.cardIndex);//fill the lists
+                checkCombination.listOfColors.Insert(0, cardIndexToAdd.color);//fill the lists
+                checkCombination.listOfVec3.Insert(0, transform.position);
+                checkCombination.listOfTargetsToDestroy.Insert(0, gameObject);
+                return;
             }
-            }
+
+        }
         if (isSelected == false)
         {
-            listOfCards.listOfColors.Remove(cardIndexToAdd.color);
-            listOfCards.listOfIndexes.Remove(cardIndexToAdd.cardIndex);
-            listOfCards.listOfVec3.Remove(transform.position);
-            listOfCards.listOfTargetsToDestroy.Remove(gameObject);
+                checkCombination.listOfIndexes.Remove(cardIndexToAdd.cardIndex);
+                checkCombination.listOfColors.Remove(cardIndexToAdd.color);
+                checkCombination.listOfVec3.Remove(transform.position);
+                checkCombination.listOfTargetsToDestroy.Remove(gameObject);
+               
         }
 
+        /*
+        switch (isSelected && (checkCombination.listOfIndexes.Count < 5))
+        {
+            case true:
+                
+                break;
+            case false:
+                break;
+        }
+         */
     }
 
+    void Particles()
+    {
+        if (isSelected == true)
+        {
+            Vector3 trans = transform.position;
+            Instantiate(party, trans, Quaternion.identity);  
+        }
+        if (isSelected == false)
+        {
+            Vector3 trans = transform.position;
+            Instantiate(party2, trans, Quaternion.identity);
+        }
+       
+    }
+
+    /*
+    IEnumerator ParticlesDestroy(GameObject particle, float particleLifetime)
+    {
+        particleSystem.particleEmitter.emit = false;
+        DestroyImmediate(particle);
+    }
+    */
 }
 
 
@@ -149,8 +257,8 @@ isSelected = true;
     }.
 
     */
-    
-  
+
+
 
 
 

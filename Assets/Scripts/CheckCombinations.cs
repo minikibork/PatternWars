@@ -10,6 +10,13 @@ public struct cardLists
     public int score;
 }
 
+[System.Serializable]
+public struct OptimalCardList
+{
+    public int indexOcl;
+    public int colorOcl;
+}
+
 public class CheckCombinations : MonoBehaviour, IPointerDownHandler
 {
     Dekk deck;
@@ -42,7 +49,14 @@ public class CheckCombinations : MonoBehaviour, IPointerDownHandler
     public int readyToDestroy = 0;
     public bool isLegitColors = false;
     public bool isThreeColors = false;
-    
+
+
+    public List<int> list = new List<int>();
+    public List<int> listOfAllIndexes = new List<int>();
+    int c1 = 0, c2 = 0, c3 = 0, c4 = 0, c5 = 0, c6 = 0, c7 = 0;
+    bool currentCombinations = false;
+    public bool isNotValid = false;
+    public Component[] indexes;
     void Start()
     {
         
@@ -51,9 +65,10 @@ public class CheckCombinations : MonoBehaviour, IPointerDownHandler
         
 
     }
+    public EventManager[] eventy;
     void Update()
     {
-
+       
         cardIndexSelected = deckFill.GetComponentsInChildren<CardInformation>();
         childTransform = gameObject.GetComponentInChildren<Transform>();
         CheckForValidLenght();
@@ -67,11 +82,9 @@ public class CheckCombinations : MonoBehaviour, IPointerDownHandler
         if (listOfIndexes.Count < 3)
         {
             SendButtonPlease.SetActive(false);
-
         }
         else
         {
-
             SendButtonPlease.SetActive(true);
         }
     }
@@ -110,7 +123,26 @@ public class CheckCombinations : MonoBehaviour, IPointerDownHandler
         {
             isLegitColors = false;
             Debug.Log("Not Legit colors");
+            isNotValid = true;
+            listOfIndexes.Clear();
+            listOfColors.Clear();
+            listOfVec3.Clear();
+            listOfTargetsToDestroy.Clear();
+            isThreeColors = false;
+            Highlight();
         }
+    }
+
+    /// <summary>
+    /// /////////////////////////////////////////////////////////////////////////////////
+    /// </summary>
+    /// 
+
+    void LegitOptinalCombinations()
+    {
+
+
+
     }
 
     void LegitCombination()
@@ -122,81 +154,114 @@ public class CheckCombinations : MonoBehaviour, IPointerDownHandler
             {
                 Debug.Log("We are on");
      
-        listOfIndexes.Sort();
+                listOfIndexes.Sort();
         
-        for (int i = 0; cardCombinations.Count - 1 > i; i++)
-        {
-            cardCombinations[i].combination.Sort();//sort all combinations
-        }
-
-
-        for (int i = 0; i < cardCombinations.Count - 1; i++)
-        {
-            counter = 0;
-
-                if (cardCombinations[i].combination.Count == listOfIndexes.Count)
+                for (int i = 0; cardCombinations.Count - 1 > i; i++)
                 {
-                    for (int b = 0; b < cardCombinations[i].combination.Count; b++)
-                    {
-                        if (cardCombinations[i].combination[b] == listOfIndexes[b])
-                        {
-                            counter++;
-                        }
-                        else
-                        {
-                            Debug.Log("Not a valid combination");
-                            break;
-
-                        }
-                    }
-
-                    if (counter == listOfIndexes.Count)
-                    {
-                        TotalScore += cardCombinations[i].score;
-                        Debug.Log("Valid Combination");
-                            // Debug.Log(i);
-                            // Debug.Log(TotalScore);
-                            MatchOptimalScore();
-                            legitCombination = true;
-                            ReplaceAndDestroyCards();
-                            break;
-
-                    }
-                    counter = 0;
+                    cardCombinations[i].combination.Sort();//sort all combinations
                 }
-                 
-            }
+
+
+                for (int i = 0; i < cardCombinations.Count - 1; i++)
+                {
+                    counter = 0;
+
+                        if (cardCombinations[i].combination.Count == listOfIndexes.Count)
+                        {
+                            for (int b = 0; b < cardCombinations[i].combination.Count; b++)
+                            {
+                                if (cardCombinations[i].combination[b] == listOfIndexes[b])
+                                {
+                                    counter++;
+                                }
+                                else
+                                {
+
+                                        Debug.Log("Is not a Valid Combination");
+                                        isThreeColors = false;
+                                        isLegitColors = false;
+                                        listOfIndexes.Clear();
+                                        listOfColors.Clear();
+                               
+
+                                break;
+
+                                }
+                            }
+
+                            if (counter == listOfIndexes.Count)
+                            {
+                                TotalScore += cardCombinations[i].score;
+                                Debug.Log("Valid Combination");
+                                    // Debug.Log(i);
+                                    // Debug.Log(TotalScore);
+                                    MatchOptimalScore();
+                                    legitCombination = true;
+                                    ReplaceAndDestroyCards();
+                                    break;
+                            }
+                            counter = 0;
+                            listOfVec3.Clear();
+                            listOfTargetsToDestroy.Clear();
+                            isNotValid = true;
+                            
+                    }
+                }
                 listOfIndexes.Clear();
                 listOfColors.Clear();
+                isNotValid = true;
                 isThreeColors = false;
                 isLegitColors = false;
+                Highlight();
+
             }
         sendButton.hasBeenSend = false;
+             //NB
         }
     }
 
+    public List<bool> listOfHighlightBools;
+    void Highlight()
+    {
+        
+        eventy = deckFill.GetComponentsInChildren<EventManager>();
+        
+        for(int i=0; i<eventy.Length; i++)
+        {
+            eventy[i].isSelected = false;
+            eventy[i].scale.x = 2f;
+            eventy[i].scale.y = 2f;
+    
+        }
+        return;
+     }
+    
     void ReplaceAndDestroyCards()
     {
         for(int i=0; i < listOfVec3.Count; i++)
         {
-            deckFill = GameObject.FindGameObjectWithTag("Deck");
-            deck = deckFill.GetComponent<Dekk>();
-            int n = Random.Range(0, deck.cards.Count);
-            GameObject g = Instantiate(deck.cards[n], listOfVec3[i], Quaternion.identity) as GameObject;
-            deck.cards.Remove(deck.cards[n]);
-            
+            Debug.Log("I AM WORKING");
+            if (deck.cards.Count != 0)
+            {
+               Debug.Log("I am inside");
+                deckFill = GameObject.FindGameObjectWithTag("Deck");
+                deck = deckFill.GetComponent<Dekk>();
+                int n = Random.Range(0, deck.cards.Count);
+                GameObject g = Instantiate(deck.cards[n], listOfVec3[i], Quaternion.identity) as GameObject;
+                g.transform.parent = gameObject.transform;
+                deck.cards.Remove(deck.cards[n]);
+
+                Debug.Log("I am inside");
+            }
+            Debug.Log("I AM WORKING TOO");
             Destroy(listOfTargetsToDestroy[i]);
-          
         }
         listOfTargetsToDestroy.Clear();
         listOfVec3.Clear();
+        legitCombination = false;
+        Debug.Log("legit is going false");
     }
-    public List<int> list = new List<int>();
-    public List<int> listOfAllIndexes = new List<int>();
-    int c1=0, c2=0, c3=0, c4=0, c5=0, c6=0, c7=0;
-
-
-    public Component[] indexes;
+   
     void OptimalScore()
     {
         
@@ -256,117 +321,177 @@ public class CheckCombinations : MonoBehaviour, IPointerDownHandler
         if (listOfAllIndexes.Contains(1) && listOfAllIndexes.Contains(2) && listOfAllIndexes.Contains(3) && listOfAllIndexes.Contains(4) && listOfAllIndexes.Contains(7))
         {
             Debug.Log("5 star is the highest");
+            currentCombinations = true;
+            return;
         }
 
         else if (listOfAllIndexes.Contains(1) && c1 == 5)
         {
             Debug.Log("11111");
+            currentCombinations = true;
+            return;
         }
 
         else if (listOfAllIndexes.Contains(2) && c2 == 5)
         {
             Debug.Log("22222");
+            currentCombinations = true;
+            return;
         }
 
         else if (listOfAllIndexes.Contains(3) && c3 == 5)
         {
             Debug.Log("33333");
+
+            currentCombinations = true;
+            return;
         }
 
         else if (listOfAllIndexes.Contains(4) && c4 == 5)
         {
             Debug.Log("44444");
+
+            currentCombinations = true;
+            return;
         }
 
         else if (listOfAllIndexes.Contains(5) && c5 == 5)
         {
             Debug.Log("55555");
+            currentCombinations = true;
+            return;
         }
         else if (listOfAllIndexes.Contains(6) && c6 == 5)
         {
             Debug.Log("66666");
+            currentCombinations = true;
+            return;
         }
         else if (listOfAllIndexes.Contains(7) && c7 == 5)
         {
             Debug.Log("77777");
+            currentCombinations = true;
+            return;
         }
         else if (listOfAllIndexes.Contains(5) && listOfAllIndexes.Contains(6) && listOfAllIndexes.Contains(7))
         {
             Debug.Log("5 6 7");
+            currentCombinations = true;
+            return;
         }
         else if (listOfAllIndexes.Contains(3) && listOfAllIndexes.Contains(4) && listOfAllIndexes.Contains(6) && listOfAllIndexes.Contains(7))
         {
             Debug.Log("3 4 6 7");
+            currentCombinations = true;
+            return;
         }
         else if (listOfAllIndexes.Contains(1) && listOfAllIndexes.Contains(2) && listOfAllIndexes.Contains(5) && listOfAllIndexes.Contains(7))
         {
             Debug.Log("1 2 5 7");
+            currentCombinations = true;
+            return;
         }
         else if (listOfAllIndexes.Contains(1) && listOfAllIndexes.Contains(2) && listOfAllIndexes.Contains(6))
         {
             Debug.Log("1 2 6");
+            currentCombinations = true;
+            return;
         }
         else if (listOfAllIndexes.Contains(3) && listOfAllIndexes.Contains(4) && listOfAllIndexes.Contains(5))
         {
             Debug.Log("3 4 5");
+            currentCombinations = true;
+            return;
         }
         else if (listOfAllIndexes.Contains(1) && c1 == 4)
         {
             Debug.Log("1111");
+            currentCombinations = true;
+            return;
         }
         if (listOfAllIndexes.Contains(2) && c2 == 4)
         {
             Debug.Log("2222");
+            currentCombinations = true;
+            return;
         }
         if (listOfAllIndexes.Contains(3) && c3 == 4)
         {
             Debug.Log("3333");
+            currentCombinations = true;
+            return;
         }
         if (listOfAllIndexes.Contains(4) && c4 == 4)
         {
             Debug.Log("4444");
+            currentCombinations = true;
+            return;
         }
         if (listOfAllIndexes.Contains(5) && c5 == 4)
         {
             Debug.Log("5555");
+            currentCombinations = true;
+            return;
         }
         if (listOfAllIndexes.Contains(6) && c6 == 4)
         {
             Debug.Log("6666");
+            currentCombinations = true;
+            return;
         }
         if (listOfAllIndexes.Contains(7) && c7 == 4)
         {
             Debug.Log("7777");
+            currentCombinations = true;
+            return;
         }
         if (listOfAllIndexes.Contains(1) && c1 == 3)
         {
             Debug.Log("111");
+            currentCombinations = true;
+            return;
         }
         if (listOfAllIndexes.Contains(2) && c2 == 3)
         {
             Debug.Log("222");
+            currentCombinations = true;
+            return;
         }
         if (listOfAllIndexes.Contains(3) && c3 == 3)
         {
             Debug.Log("333");
+            currentCombinations = true;
+            return;
         }
         if (listOfAllIndexes.Contains(4) && c4 == 3)
         {
             Debug.Log("444");
+            currentCombinations = true;
+            return;
         }
         if (listOfAllIndexes.Contains(5) && c5 == 3)
         {
             Debug.Log("555");
+            currentCombinations = true;
+            return;
         }
         if (listOfAllIndexes.Contains(6) && c6 == 3)
         {
             Debug.Log("666");
+            currentCombinations = true;
+            return;
         }
         if (listOfAllIndexes.Contains(7) && c7 == 3)
         {
             Debug.Log("777");
+            currentCombinations = true;
+            return;
         }
-        
+        if(currentCombinations==false)
+        {
+            Debug.Log("No more combinations");
+            currentCombinations = false;
+        }
     }
 
 }
