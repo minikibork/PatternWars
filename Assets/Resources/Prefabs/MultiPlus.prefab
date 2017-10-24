@@ -21,9 +21,11 @@ GameObject:
   - component: {fileID: 4041141481900014}
   - component: {fileID: 212609597986573150}
   - component: {fileID: 61066039009372530}
+  - component: {fileID: 114602176478692210}
+  - component: {fileID: 114168428888351410}
   m_Layer: 0
   m_Name: MultiPlus
-  m_TagString: Untagged
+  m_TagString: Card
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -66,6 +68,45 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.08, y: 1.12}
   m_EdgeRadius: 0
+--- !u!114 &114168428888351410
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1703576943512196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fce759c47f09cf44b8acacf6f8bf5b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cards: []
+  deckFill: {fileID: 0}
+  checkCombination: {fileID: 0}
+  cardIndexToAdd: {fileID: 0}
+  isSelected: 0
+  isLegitCombination: 0
+  lastPressed: {fileID: 0}
+  deck: {fileID: 0}
+  self: {fileID: 1703576943512196}
+  n: 0
+  party: {fileID: 1858090315444032, guid: 67dcdb0aa42a102429693d4300b5a405, type: 2}
+  party2: {fileID: 1765660546200620, guid: 772bf7d07e0e59841930176bcb6aa610, type: 2}
+  sendButon: {fileID: 1129113057951864, guid: 96cedba2b0c170040ba9dfcea2c814c7, type: 2}
+  sendButton: {fileID: 0}
+  scale: {x: 0, y: 0, z: 0}
+--- !u!114 &114602176478692210
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1703576943512196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08768b9320e6f9d4abbac2519e2c2bb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardIndex: 5
+  color: 2
 --- !u!212 &212609597986573150
 SpriteRenderer:
   m_ObjectHideFlags: 1

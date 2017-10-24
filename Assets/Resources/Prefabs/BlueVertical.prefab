@@ -22,10 +22,11 @@ GameObject:
   - component: {fileID: 212674277338311034}
   - component: {fileID: 222261459925595098}
   - component: {fileID: 61726060571005370}
-  - component: {fileID: 114969163256346592}
+  - component: {fileID: 114514595823265902}
+  - component: {fileID: 114878728630445244}
   m_Layer: 0
   m_Name: BlueVertical
-  m_TagString: Untagged
+  m_TagString: Card
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -55,7 +56,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.12, y: 1.08}
   m_EdgeRadius: 0
---- !u!114 &114969163256346592
+--- !u!114 &114514595823265902
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1285520268146004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08768b9320e6f9d4abbac2519e2c2bb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardIndex: 1
+  color: 3
+--- !u!114 &114878728630445244
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -66,6 +80,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fce759c47f09cf44b8acacf6f8bf5b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cards: []
+  deckFill: {fileID: 0}
+  checkCombination: {fileID: 0}
+  cardIndexToAdd: {fileID: 0}
+  isSelected: 0
+  isLegitCombination: 0
+  lastPressed: {fileID: 0}
+  deck: {fileID: 0}
+  self: {fileID: 1285520268146004}
+  n: 0
+  party: {fileID: 1858090315444032, guid: 67dcdb0aa42a102429693d4300b5a405, type: 2}
+  party2: {fileID: 1765660546200620, guid: 772bf7d07e0e59841930176bcb6aa610, type: 2}
+  sendButon: {fileID: 1129113057951864, guid: 96cedba2b0c170040ba9dfcea2c814c7, type: 2}
+  sendButton: {fileID: 0}
+  scale: {x: 0, y: 0, z: 0}
 --- !u!212 &212674277338311034
 SpriteRenderer:
   m_ObjectHideFlags: 1

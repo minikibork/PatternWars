@@ -1,29 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class Highlight : MonoBehaviour {
-
+public class Highlight : MonoBehaviour
+{ 
 
     
-
-    void OnEnable()
+    void Start()
     {
-        EventManager.OnClick += Highlighting;
-    }
-
-    void OnDisable()
-    {
-        EventManager.OnClick -= Highlighting;
         
     }
-
     void Highlighting()
     {
-        Debug.Log("I am clicked");
-        //Change sprites with Highlighted ones
+
+
     }
-
-
 
 }
